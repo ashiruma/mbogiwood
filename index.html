@@ -4,54 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mbogiwood Productions</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #141414;
             color: #fff;
+            transition: all 0.3s ease-in-out;
         }
         header {
-            background-color: #008000; /* Green from brand colors */
+            background: linear-gradient(90deg, #008000, #B22222);
             padding: 20px;
             text-align: center;
             position: relative;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
         header img {
             position: absolute;
             left: 20px;
             top: 10px;
-            width: 150px;
+            width: 100px;
         }
         nav {
             display: flex;
             justify-content: center;
             gap: 20px;
-            padding: 10px;
-            background-color: #FFD700; /* Yellow from brand colors */
+            padding: 15px;
+            background-color: rgba(255, 215, 0, 0.9);
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
         }
         nav a {
             color: #000;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            color: #B22222;
         }
         .hero {
             text-align: center;
-            padding: 50px;
-            background-color: #B22222; /* Red from brand colors */
+            padding: 80px 20px;
+            background: url('banner.jpg') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .hero p {
+            font-size: 1.2em;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .content {
-            padding: 20px;
+            padding: 40px;
             text-align: center;
+        }
+        .btn {
+            background-color: #FFD700;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+        .btn:hover {
+            background-color: #B22222;
+            color: #fff;
         }
         footer {
             background-color: #008000;
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -70,6 +110,7 @@
     <section class="hero">
         <h2>Showcasing Authentic Kenyan Stories</h2>
         <p>Join us in bringing powerful narratives to the screen.</p>
+        <a href="#" class="btn">Explore Now</a>
     </section>
     <section class="content">
         <h2>Welcome to Mbogiwood Productions</h2>
