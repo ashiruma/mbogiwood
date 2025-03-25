@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership - Mbogiwood Productions</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <img src="LOGO.png" alt="Mbogiwood Logo">
+        <h1>Join Our Community</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="investors.html">Investors</a>
+        <a href="streaming.html">Streaming</a>
+        <a href="membership.html">Membership</a>
+    </nav>
+    <section class="content">
+        <h2>Become a Member</h2>
+        <p>Access exclusive content and support our mission.</p>
+    </section>
+    <section class="content">
+        <form id="membership-form">
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <select id="membership_level" name="membership_level">
+                <option value="Basic">Basic</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+            </select>
+            <button type="submit" class="btn">Join Now</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('membership-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            
+            fetch('/members', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    membership_level: formData.get('membership_level')
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Membership created successfully');
+                // Redirect or update the UI as needed
+            });
+        });
+    </script>
+</body>
+</html>
