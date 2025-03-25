@@ -2,22 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mbogiwood Productions</title>
+  <!-- Normalize & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Verdana:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- AOS Library for Scroll Animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-HoA8fdaGdODb1p7q+vN46cVxy3D0SlIwyRjfGJ+dLR9H1Owkkb+9r+KqH4y8KKp0Sfi6qWhv0Xzq9KzA+FQ5lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      color: #f0f0f0;
-      line-height: 1.6;
-    }
+    /* Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Verdana', sans-serif; background-color: #121212; color: #f0f0f0; line-height: 1.6; }
     a { text-decoration: none; }
     /* Header & Navigation */
     header {
@@ -32,23 +27,10 @@
       z-index: 100;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     }
-    header img {
-      max-width: 120px;
-    }
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fff;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #FFD700;
-    }
+    header img { max-width: 120px; }
+    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+    nav a { color: #fff; font-weight: 600; padding: 0.5rem 1rem; transition: color 0.3s ease; }
+    nav a:hover { color: #FFD700; }
     /* Hero Section */
     .hero {
       height: 100vh;
@@ -62,8 +44,7 @@
     }
     .hero::after {
       content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.5);
     }
     .hero-content {
@@ -93,22 +74,11 @@
       transition: all 0.3s ease;
       margin: 0.5rem;
     }
-    .btn:hover {
-      background-color: #B22222;
-      color: #fff;
-    }
+    .btn:hover { background-color: #B22222; color: #fff; }
     /* Sections */
-    section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    /* Grid for Cards */
+    section { padding: 4rem 2rem; text-align: center; }
+    .section-title { font-size: 2rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; }
+    /* Grid Layout for Cards */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -122,37 +92,37 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       transition: transform 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 100%; border-radius: 5px; margin-bottom: 1rem; }
     /* Footer */
     footer {
       background: #008000;
-      padding: 20px;
+      padding: 1rem 2rem;
       text-align: center;
       margin-top: 40px;
     }
-    footer nav a {
-      margin: 0 10px;
-      color: #fff;
-    }
+    footer nav a { margin: 0 0.5rem; color: #fff; font-weight: 600; transition: color 0.3s ease; }
+    footer nav a:hover { color: #FFD700; }
     @media (max-width: 768px) {
       header { flex-direction: column; }
-      nav { flex-wrap: wrap; justify-content: center; }
-      .hero h1 { font-size: 2.5em; }
+      nav { justify-content: center; }
+      .hero-content h1 { font-size: 2.5rem; }
     }
   </style>
-  <script defer src="script.js"></script>
 </head>
 <body>
+  <!-- Google Analytics Snippet -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXX-X'); // Replace with your Analytics ID
+  </script>
+
   <!-- Header -->
-  <header>
-    <img src="logo.png" alt="Mbogiwood Logo">
+  <header data-aos="fade-down">
+    <img src="LOGO.png" alt="Mbogiwood Logo">
     <nav>
       <a href="#hero">Home</a>
       <a href="#projects">Projects</a>
@@ -166,110 +136,105 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="hero-content">
+    <div class="hero-content" data-aos="zoom-in">
       <h1>Empowering Kenyan Stories</h1>
-      <p>Invest in talent, drive subscriptions, and create employment through film.</p>
-      <a href="#projects" class="btn">Explore Projects</a>
-      <a href="#investors" class="btn">Invest with Us</a>
-      <a href="#employment" class="btn">Join Our Team</a>
+      <p>Invest in talent, drive subscriptions, engage audiences, and create employment through film.</p>
+      <button class="btn" onclick="location.href='#projects'">Explore Projects</button>
+      <button class="btn" onclick="location.href='#investors'">Invest with Us</button>
+      <button class="btn" onclick="location.href='#employment'">Join Our Team</button>
     </div>
   </section>
 
   <!-- Featured Projects Section -->
   <section id="projects">
-    <h2 class="section-title">Featured Projects</h2>
+    <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
     <div class="grid">
-      <div class="card">
+      <div class="card" data-aos="fade-up">
         <img src="project1.jpg" alt="Project 1">
         <h3>Project Title 1</h3>
         <p>Brief description of Project 1.</p>
-        <a href="#" class="btn">View Details</a>
+        <button class="btn">View Details</button>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <img src="project2.jpg" alt="Project 2">
         <h3>Project Title 2</h3>
         <p>Brief description of Project 2.</p>
-        <a href="#" class="btn">View Details</a>
+        <button class="btn">View Details</button>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <img src="project3.jpg" alt="Project 3">
         <h3>Project Title 3</h3>
         <p>Brief description of Project 3.</p>
-        <a href="#" class="btn">View Details</a>
+        <button class="btn">View Details</button>
       </div>
     </div>
   </section>
 
   <!-- Investors Section -->
-  <section id="investors" style="background: #222;">
+  <section id="investors" style="background:#1e1e1e;" data-aos="fade-up">
     <h2 class="section-title">Investment Opportunities</h2>
-    <p>Discover the growth potential of our film projects with detailed projections, success stories, and investor testimonials.</p>
-    <a href="#" class="btn">Download Investor Pack</a>
+    <p>Explore growth potential with success stories and detailed investor insights.</p>
+    <button class="btn">Download Investor Pack</button>
   </section>
 
   <!-- Subscriptions / Membership Section -->
-  <section id="subscriptions">
+  <section id="subscriptions" data-aos="fade-up">
     <h2 class="section-title">Become a Member</h2>
     <p>Join our community for exclusive content, early screenings, and networking opportunities.</p>
-    <button onclick="fetchSubscriptions()">Check Subscriptions</button>
-    <div id="subscriptions"></div>
-  </section>
-
-  <section id="payment-section">
-    <h2>Make a Payment</h2>
-    <input type="text" id="phone" placeholder="Enter M-Pesa number">
-    <input type="number" id="amount" placeholder="Amount">
-    <button onclick="makePayment()">Pay</button>
-    <div id="paymentStatus"></div>
+    <form id="signupForm" style="max-width:400px; margin:0 auto;">
+      <input type="email" placeholder="Email" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+      <input type="password" placeholder="Password" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+      <button type="submit" class="btn" style="width:100%;">Sign Up</button>
+    </form>
   </section>
 
   <!-- Employment Section -->
-  <section id="employment" style="background: #222;">
+  <section id="employment" style="background:#1e1e1e;" data-aos="fade-up">
     <h2 class="section-title">Join Our Team</h2>
-    <p>Explore career opportunities and help us create employment in the film industry.</p>
+    <p>Find career opportunities and help create employment in the film industry.</p>
     <div class="grid">
-      <div class="card">
+      <div class="card" data-aos="fade-up">
         <h3>Job Title 1</h3>
         <p>Brief description of Job Title 1.</p>
-        <a href="#" class="btn">Apply Now</a>
+        <button class="btn">Apply Now</button>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <h3>Job Title 2</h3>
         <p>Brief description of Job Title 2.</p>
-        <a href="#" class="btn">Apply Now</a>
+        <button class="btn">Apply Now</button>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <h3>Job Title 3</h3>
         <p>Brief description of Job Title 3.</p>
-        <a href="#" class="btn">Apply Now</a>
+        <button class="btn">Apply Now</button>
       </div>
     </div>
   </section>
 
   <!-- Latest News Section -->
-  <section id="news">
+  <section id="news" data-aos="fade-up">
     <h2 class="section-title">Latest News & Updates</h2>
     <div class="grid">
-      <div class="card">
+      <div class="card" data-aos="fade-up">
         <h3>News Headline 1</h3>
         <p>Brief news description...</p>
-        <a href="#" class="btn">Read More</a>
+        <button class="btn">Read More</button>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <h3>News Headline 2</h3>
         <p>Brief news description...</p>
-        <a href="#" class="btn">Read More</a>
+        <button class="btn">Read More</button>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <h3>News Headline 3</h3>
         <p>Brief news description...</p>
-        <a href="#" class="btn">Read More</a>
+        <button class="btn">Read More</button>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="contact">
+  <footer id="contact" data-aos="fade-up">
     <nav>
       <a href="#hero">Home</a>
       <a href="#projects">Projects</a>
@@ -280,12 +245,41 @@
       <a href="#contact">Contact</a>
     </nav>
     <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
-    <p>
-      Follow us on 
+    <p>Follow us on 
       <a href="#" style="color:#FFD700;">Facebook</a>, 
       <a href="#" style="color:#FFD700;">Instagram</a>, 
       <a href="#" style="color:#FFD700;">LinkedIn</a>
     </p>
   </footer>
+
+  <!-- AOS JS for Scroll Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-4e2AXLla4QUr3WKaHqf2wrYNEK4S9HBAoh3Wf9OVmepWlv1Xbl9pIRdw1t/wCi64xF3cPKk07c6kILz5T/1u0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    // Example: Dynamic Content Integration (fetch data from a backend API)
+    async function loadSubscriptions() {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/subscriptions");
+        const data = await response.json();
+        // Placeholder: dynamically update the subscriptions section
+        console.log("Dynamic subscription data:", data);
+      } catch (error) {
+        console.error("Error loading subscriptions:", error);
+      }
+    }
+    loadSubscriptions();
+
+    // Personalization placeholder: check user segmentation (e.g., using localStorage)
+    function personalizeContent() {
+      // Example: if a user is identified as an investor, show tailored content.
+      const userSegment = localStorage.getItem("userSegment");
+      if (userSegment === "investor") {
+        // Adjust content dynamically
+        document.querySelector("#investors p").innerText = "Exclusive investor insights and opportunities.";
+      }
+    }
+    personalizeContent();
+  </script>
 </body>
 </html>
