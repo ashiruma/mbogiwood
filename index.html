@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mbogiwood Productions</title>
-  <!-- Normalize & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Verdana:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- AOS Library for Scroll Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-HoA8fdaGdODb1p7q+vN46cVxy3D0SlIwyRjfGJ+dLR9H1Owkkb+9r+KqH4y8KKp0Sfi6qWhv0Xzq9KzA+FQ5lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    /* Base Styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Verdana', sans-serif; background-color: #121212; color: #f0f0f0; line-height: 1.6; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
     a { text-decoration: none; }
     /* Header & Navigation */
     header {
@@ -26,12 +30,25 @@
       justify-content: space-between;
       align-items: center;
       z-index: 100;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
-    header img { max-width: 120px; }
-    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-    nav a { color: #fff; font-weight: 600; padding: 0.5rem 1rem; transition: color 0.3s ease; }
-    nav a:hover { color: #FFD700; }
+    header img {
+      max-width: 120px;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #FFD700;
+    }
     /* Hero Section */
     .hero {
       height: 100vh;
@@ -45,7 +62,8 @@
     }
     .hero::after {
       content: "";
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.5);
     }
     .hero-content {
@@ -75,11 +93,22 @@
       transition: all 0.3s ease;
       margin: 0.5rem;
     }
-    .btn:hover { background-color: #B22222; color: #fff; }
+    .btn:hover {
+      background-color: #B22222;
+      color: #fff;
+    }
     /* Sections */
-    section { padding: 4rem 2rem; text-align: center; }
-    .section-title { font-size: 2rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; }
-    /* Grid Layout for Cards */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    /* Grid for Cards */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -93,8 +122,14 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       transition: transform 0.3s ease;
     }
-    .card:hover { transform: translateY(-5px); }
-    .card img { width: 100%; border-radius: 5px; margin-bottom: 1rem; }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
     /* Footer */
     footer {
       background: #008000;
@@ -102,229 +137,235 @@
       text-align: center;
       margin-top: 40px;
     }
-    footer nav a { margin: 0 0.5rem; color: #fff; font-weight: 600; transition: color 0.3s ease; }
-    footer nav a:hover { color: #FFD700; }
+    footer nav a {
+      margin: 0 0.5rem;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer nav a:hover {
+      color: #FFD700;
+    }
     @media (max-width: 768px) {
-      header { flex-direction: column; }
-      nav { justify-content: center; }
+      header {
+        flex-direction: column;
+      }
+      nav {
+        justify-content: center;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    /* Enhanced Animations & Interactions (Additional Updates) */
+    /* Parallax effect is achieved via the fixed background in hero */
+    
+    /* Animated Loading Spinner for Dynamic Content */
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid #FFD700;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 2rem auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Pay To Watch Section */
+    .pay-to-watch {
+      padding: 4rem 2rem;
+      background: #1e1e1e;
+      text-align: center;
+      border-top: 2px solid #FFD700;
+    }
+    .pay-to-watch h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .pay-to-watch p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    
+    /* Contact Form Feedback Animation */
+    .message {
+      animation: bounce 0.5s;
+    }
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Responsive Media Queries */
+    @media (max-width: 1024px) {
+      .hero-content h1 { font-size: 2.75rem; }
+      .hero-content p { font-size: 1.1rem; }
+    }
+    @media (max-width: 768px) {
+      .hero { height: 80vh; }
       .hero-content h1 { font-size: 2.5rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      header { padding: 15px 1rem; }
+      nav a { padding: 6px 10px; font-size: 0.9rem; }
+      .section-title { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Google Analytics Snippet -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXXX-X'); // Replace with your Analytics ID
-  </script>
-
   <!-- Header -->
-  <header data-aos="fade-down">
-    <img src="LOGO.png" alt="Mbogiwood Logo">
+  <header>
+    <img src="logo.png" alt="Mbogiwood Logo">
     <nav>
-      <a href="#hero">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#investors">Investors</a>
-      <a href="#subscriptions">Subscriptions</a>
-      <a href="#employment">Employment</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="investors.html">Investors</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="employment.html">Employment</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-content" data-aos="zoom-in">
-      <h1>Empowering Kenyan Stories</h1>
-      <p>Invest in talent, drive subscriptions, engage audiences, and create employment through film.</p>
-      <button class="btn" onclick="location.href='#projects'">Explore Projects</button>
-      <button class="btn" onclick="location.href='#investors'">Invest with Us</button>
-      <button class="btn" onclick="location.href='#employment'">Join Our Team</button>
-    </div>
-  </section>
-
-  <!-- Featured Projects Section -->
-  <section id="projects">
-    <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
-    <div class="grid">
-      <div class="card" data-aos="fade-up">
-        <img src="project1.jpg" alt="Project 1">
-        <h3>Project Title 1</h3>
-        <p>Brief description of Project 1.</p>
-        <button class="btn">View Details</button>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero" aria-label="Hero Section">
+      <div class="hero-content">
+        <h1>Empowering Kenyan Stories</h1>
+        <p>Invest in talent, drive subscriptions, and create employment through film.</p>
+        <button class="btn" onclick="location.href='#projects'">Explore Projects</button>
+        <button class="btn" onclick="location.href='#investors'">Invest with Us</button>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="project2.jpg" alt="Project 2">
-        <h3>Project Title 2</h3>
-        <p>Brief description of Project 2.</p>
-        <button class="btn">View Details</button>
+    </section>
+    
+    <!-- Featured Projects Section (Dynamic Content with Placeholder Videos) -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title">Featured Projects</h2>
+      <div id="projectsContainer" class="grid">
+        <div id="projectsSpinner" class="spinner"></div>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="project3.jpg" alt="Project 3">
-        <h3>Project Title 3</h3>
-        <p>Brief description of Project 3.</p>
-        <button class="btn">View Details</button>
+    </section>
+    
+    <!-- Investors Section -->
+    <section id="investors" style="background:#1e1e1e;" aria-labelledby="investors-title">
+      <h2 class="section-title" id="investors-title">Investment Opportunities</h2>
+      <p>Discover growth potential and success stories. Download our investor pack for detailed projections.</p>
+      <button class="btn" id="downloadInvestorPackBtn">Download Investor Pack</button>
+    </section>
+    
+    <!-- Subscriptions / Membership Section -->
+    <section id="subscriptions" aria-labelledby="subscriptions-title">
+      <h2 class="section-title" id="subscriptions-title">Become a Member</h2>
+      <p>Join our community for exclusive content, early screenings, and networking opportunities.</p>
+      <form style="max-width:400px; margin:0 auto;">
+        <input type="email" placeholder="Email" aria-label="Email" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+        <input type="password" placeholder="Password" aria-label="Password" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+        <button type="submit" class="btn" style="width:100%;">Sign Up</button>
+      </form>
+    </section>
+    
+    <!-- Employment Section (Job Listings with Lorem Ipsum) -->
+    <section id="employment" style="background:#1e1e1e;" aria-labelledby="employment-title">
+      <h2 class="section-title" id="employment-title">Join Our Team</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula id mauris euismod tincidunt.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Job Title 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          <button class="btn">Apply Now</button>
+        </div>
+        <div class="card">
+          <h3>Job Title 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          <button class="btn">Apply Now</button>
+        </div>
+        <div class="card">
+          <h3>Job Title 3</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          <button class="btn">Apply Now</button>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Investors Section -->
-  <section id="investors" style="background:#1e1e1e;" data-aos="fade-up">
-    <h2 class="section-title">Investment Opportunities</h2>
-    <p>Explore growth potential with success stories and detailed investor insights.</p>
-    <button class="btn">Download Investor Pack</button>
-  </section>
-
-  <!-- Subscriptions / Membership Section -->
-  <section id="subscriptions" data-aos="fade-up">
-    <h2 class="section-title">Become a Member</h2>
-    <p>Join our community for exclusive content, early screenings, and networking opportunities.</p>
-    <form id="signupForm" style="max-width:400px; margin:0 auto;">
-      <input type="email" placeholder="Email" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
-      <input type="password" placeholder="Password" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
-      <button type="submit" class="btn" style="width:100%;">Sign Up</button>
-    </form>
-  </section>
-
-  <!-- Employment Section -->
-  <section id="employment" style="background:#1e1e1e;" data-aos="fade-up">
-    <h2 class="section-title">Join Our Team</h2>
-    <p>Find career opportunities and help create employment in the film industry.</p>
-    <div class="grid">
-      <div class="card" data-aos="fade-up">
-        <h3>Job Title 1</h3>
-        <p>Brief description of Job Title 1.</p>
-        <button class="btn">Apply Now</button>
+    </section>
+    
+    <!-- Latest News Section (News with Lorem Ipsum Placeholder) -->
+    <section id="news" aria-labelledby="news-title">
+      <h2 class="section-title" id="news-title">Latest News & Updates</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><a href="news-detail.html?id=1">News Headline 1</a></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+          <a href="news-detail.html?id=1" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3><a href="news-detail.html?id=2">News Headline 2</a></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+          <a href="news-detail.html?id=2" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3><a href="news-detail.html?id=3">News Headline 3</a></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+          <a href="news-detail.html?id=3" class="btn">Read More</a>
+        </div>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <h3>Job Title 2</h3>
-        <p>Brief description of Job Title 2.</p>
-        <button class="btn">Apply Now</button>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <h3>Job Title 3</h3>
-        <p>Brief description of Job Title 3.</p>
-        <button class="btn">Apply Now</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest News Section -->
-  <section id="news" data-aos="fade-up">
-    <h2 class="section-title">Latest News & Updates</h2>
-    <div class="grid">
-      <div class="card" data-aos="fade-up">
-        <h3>News Headline 1</h3>
-        <p>Brief news description...</p>
-        <button class="btn">Read More</button>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <h3>News Headline 2</h3>
-        <p>Brief news description...</p>
-        <button class="btn">Read More</button>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <h3>News Headline 3</h3>
-        <p>Brief news description...</p>
-        <button class="btn">Read More</button>
-      </div>
-    </div>
-  </section>
-
+    </section>
+    
+    <!-- Pay To Watch Section -->
+    <section id="paytowatch" class="pay-to-watch" aria-labelledby="paytowatch-title">
+      <h2 id="paytowatch-title">Pay to Watch</h2>
+      <p>Access exclusive films by paying a small fee. Enjoy premium content tailored for cinephiles.</p>
+      <button class="btn" id="payToWatchBtn">Pay Now to Watch</button>
+    </section>
+    
+    <!-- Contact Section (Integrated Contact Form) -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact Us</h2>
+      <form id="contactForm" style="max-width:500px; margin:0 auto; text-align:left;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+        
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <p id="formFeedback" class="message"></p>
+    </section>
+  </main>
+  
   <!-- Footer -->
-  <footer id="contact" data-aos="fade-up">
+  <footer id="footer" aria-label="Footer">
     <nav>
-      <a href="#hero">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#investors">Investors</a>
-      <a href="#subscriptions">Subscriptions</a>
-      <a href="#employment">Employment</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="investors.html">Investors</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="employment.html">Employment</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
     <p>Follow us on 
-      <a href="#" style="color:#FFD700;">Facebook</a>, 
-      <a href="#" style="color:#FFD700;">Instagram</a>, 
-      <a href="#" style="color:#FFD700;">LinkedIn</a>
+      <a href="#">Facebook</a>, 
+      <a href="#">Instagram</a>, 
+      <a href="#">LinkedIn</a>
     </p>
   </footer>
-
-  <!-- AOS JS for Scroll Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-4e2AXLla4QUr3WKaHqf2wrYNEK4S9HBAoh3Wf9OVmepWlv1Xbl9pIRdw1t/wCi64xF3cPKk07c6kILz5T/1u0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    AOS.init({ duration: 1000 });
-
-    // Example: Dynamic Content Integration (fetch data from a backend API)
-    async function loadSubscriptions() {
-      try {
-        const response = await fetch("http://127.0.0.1:5000/subscriptions");
-        const data = await response.json();
-        // Placeholder: dynamically update the subscriptions section
-        console.log("Dynamic subscription data:", data);
-      } catch (error) {
-        console.error("Error loading subscriptions:", error);
-      }
-    }
-    loadSubscriptions();
-
-    // Personalization placeholder: check user segmentation (e.g., using localStorage)
-    function personalizeContent() {
-      // Example: if a user is identified as an investor, show tailored content.
-      const userSegment = localStorage.getItem("userSegment");
-      if (userSegment === "investor") {
-        // Adjust content dynamically
-        document.querySelector("#investors p").innerText = "Exclusive investor insights and opportunities.";
-      }
-    }
-    personalizeContent();
-  </script>
-=======
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mbogiwood Productions</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-</head>
-<body>
-    <header>
-        <img src="LOGO.png" alt="Mbogiwood Logo">
-        <h1>Welcome to Mbogiwood Productions</h1>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="investors.html">Investors</a>
-        <a href="streaming.html">Streaming</a>
-        <a href="membership.html">Membership</a>
-    </nav>
-    <section class="hero">
-        <h2>Showcasing Authentic Kenyan Stories</h2>
-        <p>Join us in bringing powerful narratives to the screen.</p>
-        <a href="#" class="btn">Explore Now</a>
-    </section>
-    <section class="content">
-        <h2>Welcome to Mbogiwood Productions</h2>
-        <p>Explore our projects, investment opportunities, and streaming platform.</p>
-    </section>
-    <section class="content">
-        <h2>Subscriptions</h2>
-        <button onclick="fetchSubscriptions()">Check Subscriptions</button>
-        <div id="subscriptions">Loading subscriptions...</div>
-    </section>
-    <section class="content" id="payment-section">
-        <h2>Make a Payment</h2>
-        <input type="text" id="phone" placeholder="Enter M-Pesa number">
-        <input type="number" id="amount" placeholder="Amount">
-        <button onclick="makePayment()">Pay</button>
-        <div id="paymentStatus"></div>
-    </section>
-    <footer>
-        <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
-    </footer>
->>>>>>> e6a83bf (Integrated updated code with dynamic features and enhancements)
+  
+  <!-- JavaScript: Dynamic Content Integration & Functional Buttons -->
+  <script src="script.js"></script>
 </body>
 </html>
