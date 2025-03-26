@@ -7,11 +7,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Base Reset & Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #121212;
@@ -19,6 +17,7 @@
       line-height: 1.6;
     }
     a { text-decoration: none; }
+    
     /* Header & Navigation */
     header {
       position: fixed;
@@ -32,24 +31,42 @@
       z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
-    header img {
-      max-width: 120px;
-    }
+    header img { max-width: 120px; }
     nav {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
     }
+    /* Main Menu: Projects, About Us, Contact, News Update */
     nav a {
       color: #fff;
       font-weight: 600;
       padding: 0.5rem 1rem;
       transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #FFD700;
+    nav a:hover { color: #FFD700; }
+    /* (Optional) Dropdown for Subpages: Employment & Subscriptions */
+    .dropdown {
+      position: relative;
     }
-    /* Hero Section */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #1e1e1e;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      padding: 0.5rem 0;
+      z-index: 200;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+    .dropdown-content a:hover { background: #B22222; }
+    .dropdown:hover .dropdown-content { display: block; }
+    
+    /* Hero Section with Updated Button Links */
     .hero {
       height: 100vh;
       background: url('hero-background.jpg') center/cover no-repeat;
@@ -97,6 +114,7 @@
       background-color: #B22222;
       color: #fff;
     }
+    
     /* Sections */
     section {
       padding: 4rem 2rem;
@@ -108,6 +126,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+    
     /* Grid for Cards */
     .grid {
       display: grid;
@@ -122,14 +141,13 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       transition: transform 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-5px);
-    }
+    .card:hover { transform: translateY(-5px); }
     .card img {
       width: 100%;
       border-radius: 5px;
       margin-bottom: 1rem;
     }
+    
     /* Footer */
     footer {
       background: #008000;
@@ -143,110 +161,49 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
-    footer nav a:hover {
-      color: #FFD700;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-      }
-      nav {
-        justify-content: center;
-      }
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-    }
-    
-    /* Enhanced Animations & Interactions (Additional Updates) */
-    /* Parallax effect is achieved via the fixed background in hero */
-    
-    /* Animated Loading Spinner for Dynamic Content */
-    .spinner {
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-top: 4px solid #FFD700;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 2rem auto;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    /* Pay To Watch Section */
-    .pay-to-watch {
-      padding: 4rem 2rem;
-      background: #1e1e1e;
-      text-align: center;
-      border-top: 2px solid #FFD700;
-    }
-    .pay-to-watch h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .pay-to-watch p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-    
-    /* Contact Form Feedback Animation */
-    .message {
-      animation: bounce 0.5s;
-    }
-    @keyframes bounce {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
+    footer nav a:hover { color: #FFD700; }
     
     /* Responsive Media Queries */
-    @media (max-width: 1024px) {
-      .hero-content h1 { font-size: 2.75rem; }
-      .hero-content p { font-size: 1.1rem; }
-    }
     @media (max-width: 768px) {
-      .hero { height: 80vh; }
+      header { flex-direction: column; }
+      nav { justify-content: center; }
       .hero-content h1 { font-size: 2.5rem; }
-      .grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) {
-      header { padding: 15px 1rem; }
-      nav a { padding: 6px 10px; font-size: 0.9rem; }
-      .section-title { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
-    <img src="LOGO.png" alt="Mbogiwood Logo">
+    <img src="logo.png" alt="Mbogiwood Logo">
     <nav>
-      <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
+      <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
+      <a href="news.html">News Update</a>
+      <div class="dropdown">
+        <a href="#">More</a>
+        <div class="dropdown-content">
+          <a href="employment.html">Employment</a>
+          <a href="subscriptions.html">Subscriptions</a>
+        </div>
+      </div>
     </nav>
   </header>
   
   <!-- Main Content -->
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section with Updated Button Links -->
     <section class="hero" id="hero" aria-label="Hero Section">
       <div class="hero-content">
         <h1>Empowering Kenyan Stories</h1>
         <p>Invest in talent, drive subscriptions, and create employment through film.</p>
-        <button class="btn" onclick="location.href='#projects'">Explore Projects</button>
-        <button class="btn" onclick="location.href='#investors'">Invest with Us</button>
+        <button class="btn" onclick="location.href='projects.html'">Explore Projects</button>
+        <button class="btn" onclick="location.href='investors.html'">Invest with Us</button>
       </div>
     </section>
     
-    <!-- Featured Projects Section (Dynamic Content with Placeholder Videos) -->
+    <!-- (Other Sections Remain the Same) -->
+    <!-- Featured Projects Section -->
     <section id="projects" aria-labelledby="projects-title">
       <h2 class="section-title" id="projects-title">Featured Projects</h2>
       <div id="projectsContainer" class="grid">
@@ -261,18 +218,19 @@
       <button class="btn" id="downloadInvestorPackBtn">Download Investor Pack</button>
     </section>
     
-    <!-- Subscriptions / Membership Section -->
+    <!-- Subscriptions Section (with Database Integration) -->
     <section id="subscriptions" aria-labelledby="subscriptions-title">
       <h2 class="section-title" id="subscriptions-title">Become a Member</h2>
       <p>Join our community for exclusive content, early screenings, and networking opportunities.</p>
-      <form style="max-width:400px; margin:0 auto;">
-        <input type="email" placeholder="Email" aria-label="Email" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
-        <input type="password" placeholder="Password" aria-label="Password" style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+      <!-- The backend should enforce a unique constraint on account creation (e.g., unique email) -->
+      <form id="subscriptionForm" style="max-width:400px; margin:0 auto;">
+        <input type="email" placeholder="Email" aria-label="Email" required style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+        <input type="password" placeholder="Password" aria-label="Password" required style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
         <button type="submit" class="btn" style="width:100%;">Sign Up</button>
       </form>
     </section>
     
-    <!-- Employment Section (Job Listings with Lorem Ipsum) -->
+    <!-- Employment Section -->
     <section id="employment" style="background:#1e1e1e;" aria-labelledby="employment-title">
       <h2 class="section-title" id="employment-title">Join Our Team</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula id mauris euismod tincidunt.</p>
@@ -295,7 +253,7 @@
       </div>
     </section>
     
-    <!-- Latest News Section (News with Lorem Ipsum Placeholder) -->
+    <!-- Latest News Section -->
     <section id="news" aria-labelledby="news-title">
       <h2 class="section-title" id="news-title">Latest News & Updates</h2>
       <div class="grid">
@@ -324,7 +282,7 @@
       <button class="btn" id="payToWatchBtn">Pay Now to Watch</button>
     </section>
     
-    <!-- Contact Section (Integrated Contact Form) -->
+    <!-- Contact Section -->
     <section id="contact" aria-labelledby="contact-title">
       <h2 class="section-title" id="contact-title">Contact Us</h2>
       <form id="contactForm" style="max-width:500px; margin:0 auto; text-align:left;">
@@ -349,13 +307,17 @@
   <!-- Footer -->
   <footer id="footer" aria-label="Footer">
     <nav>
-      <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
+      <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
+      <a href="news.html">News Update</a>
+      <div class="dropdown">
+        <a href="#">More</a>
+        <div class="dropdown-content">
+          <a href="employment.html">Employment</a>
+          <a href="subscriptions.html">Subscriptions</a>
+        </div>
+      </div>
     </nav>
     <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
     <p>Follow us on 
