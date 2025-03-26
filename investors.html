@@ -1,31 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investors - Mbogiwood Productions</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investors - Mbogiwood Productions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #008000, #B22222);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    header img {
+      max-width: 120px;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #FFD700;
+    }
+    /* Main Content */
+    main {
+      margin-top: 80px;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    /* Footer */
+    footer {
+      background: #008000;
+      padding: 1rem 2rem;
+      text-align: center;
+      margin-top: 40px;
+    }
+    footer nav a {
+      margin: 0 0.5rem;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer nav a:hover {
+      color: #FFD700;
+    }
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+      }
+      nav {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 480px) {
+      header {
+        padding: 15px 1rem;
+      }
+      nav a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="LOGO.png" alt="Mbogiwood Logo">
-        <h1>Invest with Us</h1>
-    </header>
+  <!-- Header -->
+  <header>
+    <img src="LOGO.png" alt="Mbogiwood Logo">
     <nav>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="investors.html">Investors</a>
-        <a href="streaming.html">Streaming</a>
-        <a href="membership.html">Membership</a>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="investors.html">Investors</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="employment.html">Employment</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
     </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <h1>Invest with Us</h1>
     <section class="content">
-        <h2>Investment Opportunities</h2>
-        <p>Join us in shaping the future of African cinema.</p>
+      <h2>Investment Opportunities</h2>
+      <p>Join us in shaping the future of African cinema.</p>
     </section>
-    <footer>
-        <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="investors.html">Investors</a>
+      <a href="subscriptions.html">Subscriptions</a>
+      <a href="employment.html">Employment</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
