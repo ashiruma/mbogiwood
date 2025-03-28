@@ -1,133 +1,137 @@
-/* Root Theme Variables */
 :root {
-    --primary: #00cc00;
-    --secondary: #51596C;
-    --success: #00cc00;
-    --info: #334AC0;
-    --warning: #F1B980;
-    --danger: #692340;
-    --light: #F9FAFC;
-    --dark: #00221C;
-    --body-color: #51596C;
-    --body-bg: #ffffff;
+    --bs-blue: #334AC0;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #692340;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #F1B980;
+    --bs-green: #00cc00;
+    --bs-teal: #00cc00;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #8C98A4;
+    --bs-gray-dark: #51596C;
+    --bs-gray-100: #F9FAFC;
+    --bs-gray-200: #F8FAFD;
+    --bs-gray-300: #E7EAF3;
+    --bs-gray-400: #BDC5D1;
+    --bs-gray-500: #97A4AF;
+    --bs-gray-600: #8C98A4;
+    --bs-gray-700: #677788;
+    --bs-gray-800: #51596C;
+    --bs-gray-900: #223B41;
+    --bs-primary: #00cc00;
+    --bs-secondary: #51596C;
+    --bs-success: #00cc00;
+    --bs-info: #334AC0;
+    --bs-warning: #F1B980;
+    --bs-danger: #692340;
+    --bs-light: #F9FAFC;
+    --bs-dark: #00221C;
+    --bs-body-font-family: Roboto, sans-serif;
+    --bs-body-font-size: 1rem;
+    --bs-body-line-height: 1.6;
+    --bs-body-color: #51596C;
 }
 
-/* Dark Mode Variables */
-[data-theme="dark"] {
-    --body-bg: #121212;
-    --body-color: #EAEAEA;
-    --light: #1E1E1E;
-    --dark: #ffffff;
-}
-
-/* Global Styles */
+/* Reset & Global Styles */
 *, ::after, ::before {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 ::selection {
-    color: var(--primary);
-    background-color: rgba(0, 128, 96, 0.1);
+    color: var(--bs-white);
+    background-color: rgba(0, 128, 96, 0.2);
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--body-color);
-    background-color: var(--body-bg);
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    background-color: var(--bs-light);
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Layout and Grid */
+/* Layout & Grid */
 .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: 30px;
 }
 
-/* Navigation Menu */
+/* Navigation Bar */
 .navbar {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-    background-color: var(--primary);
-    padding: 15px;
-    border-bottom: 3px solid var(--dark);
+    align-items: center;
+    background-color: var(--bs-primary);
+    padding: 15px 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    padding: 10px;
+    padding: 12px;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
 }
 
 .navbar a:hover {
-    color: var(--warning);
+    color: var(--bs-warning);
 }
 
-/* Toggle Button */
-.theme-toggle {
-    background-color: transparent;
-    color: white;
-    border: 2px solid var(--light);
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-    background-color: var(--light);
-    color: var(--dark);
-}
-
-/* Button Styling */
+/* Button Styles */
 .button {
-    background-color: var(--success);
+    background-color: var(--bs-success);
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
 
 .button:hover {
-    background-color: var(--primary);
+    background-color: var(--bs-teal);
 }
 
 /* Card Styling */
 .card {
-    background-color: var(--light);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--bs-light);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
-[data-theme="dark"] .card {
-    background-color: #1E1E1E;
-    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
-}
-
 .card:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
     }
+
     .container {
         grid-template-columns: 1fr;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
     }
 }
