@@ -1,46 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mbogiwood Productions</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mbogiwood Productions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Base Reset & Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #008000, #B22222);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    header img { max-width: 120px; }
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    /* Main Menu: Projects, About Us, Contact, News Update */
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #FFD700; }
+    /* (Optional) Dropdown for Subpages: Employment & Subscriptions */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #1e1e1e;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      padding: 0.5rem 0;
+      z-index: 200;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+    .dropdown-content a:hover { background: #B22222; }
+    .dropdown:hover .dropdown-content { display: block; }
+    
+    /* Hero Section with Updated Button Links */
+    .hero {
+      height: 100vh;
+      background: url('hero-background.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    .btn {
+      background-color: #FFD700;
+      color: #121212;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+    .btn:hover {
+      background-color: #B22222;
+      color: #fff;
+    }
+    
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Grid for Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .card {
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      background: #008000;
+      padding: 1rem 2rem;
+      text-align: center;
+      margin-top: 40px;
+    }
+    footer nav a {
+      margin: 0 0.5rem;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    footer nav a:hover { color: #FFD700; }
+    
+    /* Responsive Media Queries */
+    @media (max-width: 768px) {
+      header { flex-direction: column; }
+      nav { justify-content: center; }
+      .hero-content h1 { font-size: 2.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Mbogiwood</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">
-                    <a href="#">Services ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Documentaries</a></li>
-                        <li><a href="#">TV Commercials</a></li>
-                        <li><a href="#">Short Films</a></li>
-                        <li><a href="#">Feature Films</a></li>
-                        <li><a href="#">Music Videos</a></li>
-                        <li><a href="#">Photoshoots</a></li>
-                        <li><a href="#">Corporate Event Coverage</a></li>
-                        <li><a href="#">Script Writing</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="subscribe.html">Subscribe</a></li>
-                <li><a href="membership.html">Membership</a></li>
-                <li><a href="investors.html">Investors</a></li>
-            </ul>
-            <button id="darkModeToggle">🌙</button>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <h1>Welcome to Mbogiwood Productions</h1>
-            <p>Bringing Authentic Kenyan Stories to Life</p>
-        </section>
-    </main>
+  <!-- Header -->
+  <header>
+    <img src="LOGO.png" alt="Mbogiwood Logo">
+    <nav>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="news.html">News Update</a>
+      <div class="dropdown">
+        <a href="#">More</a>
+        <div class="dropdown-content">
+          <a href="employment.html">Employment</a>
+          <a href="subscriptions.html">Subscriptions</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section with Updated Button Links -->
+    <section class="hero" id="hero" aria-label="Hero Section">
+      <div class="hero-content">
+        <h1>Empowering Kenyan Stories</h1>
+        <p>Invest in talent, drive subscriptions, and create employment through film.</p>
+        <button class="btn" onclick="location.href='projects.html'">Explore Projects</button>
+        <button class="btn" onclick="location.href='investors.html'">Invest with Us</button>
+      </div>
+    </section>
+    
+    <!-- (Other Sections Remain the Same) -->
+    <!-- Featured Projects Section -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title">Featured Projects</h2>
+      <div id="projectsContainer" class="grid">
+        <div id="projectsSpinner" class="spinner"></div>
+      </div>
+    </section>
+    
+    <!-- Investors Section -->
+    <section id="investors" style="background:#1e1e1e;" aria-labelledby="investors-title">
+      <h2 class="section-title" id="investors-title">Investment Opportunities</h2>
+      <p>Discover growth potential and success stories. Download our investor pack for detailed projections.</p>
+      <button class="btn" id="downloadInvestorPackBtn">Download Investor Pack</button>
+    </section>
+    
+    <!-- Subscriptions Section (with Database Integration) -->
+    <section id="subscriptions" aria-labelledby="subscriptions-title">
+      <h2 class="section-title" id="subscriptions-title">Become a Member</h2>
+      <p>Join our community for exclusive content, early screenings, and networking opportunities.</p>
+      <!-- The backend should enforce a unique constraint on account creation (e.g., unique email) -->
+      <form id="subscriptionForm" style="max-width:400px; margin:0 auto;">
+        <input type="email" placeholder="Email" aria-label="Email" required style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+        <input type="password" placeholder="Password" aria-label="Password" required style="width:100%; padding:0.75rem; margin-bottom:1rem; border:none; border-radius:5px;">
+        <button type="submit" class="btn" style="width:100%;">Sign Up</button>
+      </form>
+    </section>
+    
+    <!-- Employment Section -->
+    <section id="employment" style="background:#1e1e1e;" aria-labelledby="employment-title">
+      <h2 class="section-title" id="employment-title">Join Our Team</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula id mauris euismod tincidunt.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Job Title 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          <button class="btn">Apply Now</button>
+        </div>
+        <div class="card">
+          <h3>Job Title 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          <button class="btn">Apply Now</button>
+        </div>
+        <div class="card">
+          <h3>Job Title 3</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          <button class="btn">Apply Now</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Latest News Section -->
+    <section id="news" aria-labelledby="news-title">
+      <h2 class="section-title" id="news-title">Latest News & Updates</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><a href="news-detail.html?id=1">News Headline 1</a></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+          <a href="news-detail.html?id=1" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3><a href="news-detail.html?id=2">News Headline 2</a></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+          <a href="news-detail.html?id=2" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <h3><a href="news-detail.html?id=3">News Headline 3</a></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+          <a href="news-detail.html?id=3" class="btn">Read More</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Pay To Watch Section -->
+    <section id="paytowatch" class="pay-to-watch" aria-labelledby="paytowatch-title">
+      <h2 id="paytowatch-title">Pay to Watch</h2>
+      <p>Access exclusive films by paying a small fee. Enjoy premium content tailored for cinephiles.</p>
+      <button class="btn" id="payToWatchBtn">Pay Now to Watch</button>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">Contact Us</h2>
+      <form id="contactForm" style="max-width:500px; margin:0 auto; text-align:left;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+        
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <p id="formFeedback" class="message"></p>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer id="footer" aria-label="Footer">
+    <nav>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="news.html">News Update</a>
+      <div class="dropdown">
+        <a href="#">More</a>
+        <div class="dropdown-content">
+          <a href="employment.html">Employment</a>
+          <a href="subscriptions.html">Subscriptions</a>
+        </div>
+      </div>
+    </nav>
+    <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
+    <p>Follow us on 
+      <a href="#">Facebook</a>, 
+      <a href="#">Instagram</a>, 
+      <a href="#">LinkedIn</a>
+    </p>
+  </footer>
+  
+  <!-- JavaScript: Dynamic Content Integration & Functional Buttons -->
+  <script src="script.js"></script>
 </body>
 </html>
