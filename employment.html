@@ -1,188 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Employment - Mbogiwood Productions</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      color: #f0f0f0;
-      line-height: 1.6;
-    }
-    a { text-decoration: none; }
-    /* Header & Navigation */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #008000, #B22222);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-    header img {
-      max-width: 120px;
-    }
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fff;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #FFD700;
-    }
-    /* Main Content */
-    main {
-      margin-top: 80px;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    .card {
-      background: #1e1e1e;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card h3 {
-      margin-bottom: 1rem;
-    }
-    .card p {
-      margin-bottom: 1rem;
-    }
-    .btn {
-      background-color: #FFD700;
-      color: #121212;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #B22222;
-      color: #fff;
-    }
-    /* Footer */
-    footer {
-      background: #008000;
-      padding: 1rem 2rem;
-      text-align: center;
-      margin-top: 40px;
-    }
-    footer nav a {
-      margin: 0 0.5rem;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    footer nav a:hover {
-      color: #FFD700;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-      }
-      nav {
-        justify-content: center;
-      }
-    }
-    @media (max-width: 480px) {
-      header {
-        padding: 15px 1rem;
-      }
-      nav a {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Mbogiwood Productions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <img src="logo.png" alt="Mbogiwood Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-  
-  <!-- Main Content -->
-  <main>
-    <h1>Join Our Team</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel ligula id mauris euismod tincidunt.</p>
-    <div class="grid">
-      <div class="card">
-        <h3>Job Title 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-        <button class="btn">Apply Now</button>
-      </div>
-      <div class="card">
-        <h3>Job Title 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-        <button class="btn">Apply Now</button>
-      </div>
-      <div class="card">
-        <h3>Job Title 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-        <button class="btn">Apply Now</button>
-      </div>
-    </div>
-  </main>
-  
-  <!-- Footer -->
-  <footer>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
-  </footer>
-  
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-area">
+                <span class="logo-small">MBOGIWOOD PRODUCTIONS</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery_page.html">Gallery</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-icon">
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Join Our Team</h1>
+                <p>Shape the future of African storytelling. Discover opportunities at Mbogiwood Productions.</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <p>Mbogiwood Productions is always looking for passionate and talented individuals to join our growing family. We believe in nurturing creativity and providing a platform for unique voices.</p>
+
+                <h2 class="section-title">Current Openings</h2>
+                <div class="job-listings">
+                    <div class="job-item">
+                        <h3>Film Director</h3>
+                        <p>Location: Nairobi, Kenya</p>
+                        <p>Seeking an experienced director with a strong vision for African narratives. Must have a proven track record in directing feature films or major documentaries.</p>
+                        <a href="#" class="apply-btn">Apply Now</a>
+                    </div>
+                    <div class="job-item">
+                        <h3>Screenwriter</h3>
+                        <p>Location: Remote</p>
+                        <p>We are looking for creative screenwriters to develop compelling scripts that resonate with global audiences. Experience in various genres is a plus.</p>
+                        <a href="#" class="apply-btn">Apply Now</a>
+                    </div>
+                    <div class="job-item">
+                        <h3>Assistant Producer</h3>
+                        <p>Location: Nairobi, Kenya</p>
+                        <p>Support our production team in managing projects from pre-production to post-production. Strong organizational skills and attention to detail required.</p>
+                        <a href="#" class="apply-btn">Apply Now</a>
+                    </div>
+                    </div>
+
+                <h2 class="section-title">Internship Opportunities</h2>
+                <p>We offer various internship programs for aspiring filmmakers and industry professionals. Gain hands-on experience and mentorship from seasoned experts.</p>
+                <a href="#" class="btn-primary">Learn More about Internships</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>lets make magic</p>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="gallery_page.html">Gallery</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="btn-talk">Lets talk</a>
+                <div class="footer-logo">
+                    <p>Mbog!</p>
+                    <p>wood</p>
+                    <p>PRODUCTIONS</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Mbogiwood Productions PLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
