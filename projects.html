@@ -1,138 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects - Mbogiwood Productions</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      color: #f0f0f0;
-      line-height: 1.6;
-    }
-    a { text-decoration: none; }
-    /* Header & Navigation */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #008000, #B22222);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-    header img {
-      max-width: 120px;
-    }
-    nav {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fff;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #FFD700;
-    }
-    /* Main Content */
-    main {
-      margin-top: 80px;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
-    /* Footer */
-    footer {
-      background: #008000;
-      padding: 1rem 2rem;
-      text-align: center;
-      margin-top: 40px;
-    }
-    footer nav a {
-      margin: 0 0.5rem;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    footer nav a:hover {
-      color: #FFD700;
-    }
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-      }
-      nav {
-        justify-content: center;
-      }
-    }
-    @media (max-width: 480px) {
-      header {
-        padding: 15px 1rem;
-      }
-      nav a {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Mbogiwood Productions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <img src="LOGO.png" alt="Mbogiwood Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-  
-  <!-- Main Content -->
-  <main>
-    <h1>Our Projects</h1>
-    <section class="content">
-      <h2>Our Film Projects</h2>
-      <p>Discover our latest productions and upcoming films.</p>
-    </section>
-  </main>
-  
-  <!-- Footer -->
-  <footer>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
-  </footer>
-  
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-area">
+                <span class="logo-small">MBOGIWOOD PRODUCTIONS</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery_page.html">Gallery</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-icon">
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Our Visual Stories</h1>
+                <p>Explore compelling visuals from our film sets, events, and behind-the-scenes moments.</p>
+            </div>
+        </section>
+
+        <section class="page-content gallery-page-grid">
+            <div class="container">
+                <div class="photo-grid large-grid">
+                    <img src="images/gallery_main_1.jpg" alt="A captivating scene from a Mbogiwood film">
+                    <img src="images/gallery_main_2.jpg" alt="Behind the scenes with the director">
+                    <img src="images/gallery_main_3.jpg" alt="Actors in costume on set">
+                    <img src="images/gallery_main_4.jpg" alt="Filming equipment in action">
+                    <img src="images/gallery_main_5.jpg" alt="Outdoor shoot with beautiful landscape">
+                    <img src="images/gallery_main_6.jpg" alt="Post-production work on computer screens">
+                    <img src="images/gallery_main_7.jpg" alt="Cast and crew group photo">
+                    <img src="images/gallery_main_8.jpg" alt="A close-up of a prop or costume">
+                </div>
+                </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>lets make magic</p>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="gallery_page.html">Gallery</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="btn-talk">Lets talk</a>
+                <div class="footer-logo">
+                    <p>Mbogi</p>
+                    <p>wood</p>
+                    <p>PRODUCTIONS</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Mbogiwood Productions PLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
