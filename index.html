@@ -3,81 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mbogiwood Productions PLC</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Mbogiwood Productions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="index.html"><img src="LOGO.png" alt="Mbogiwood Productions PLC"></a>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-area">
+                <span class="logo-small">MBOGIWOOD PRODUCTIONS</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">From</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-icon">
+                </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="employment.html">Careers</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="hero fade-in">
-        <video autoplay muted loop id="hero-video">
-            <source src="assets/videos/hero.mp4" type="video/mp4">
-        </video>
-        <div class="hero-text">
-            <h1>Mbogiwood Productions PLC</h1>
-            <p>Empowering African Narratives:</p>
-            <p>Lorem ipsum dolor sit amet</p>
-            <a href="projects.html" class="cta-button">Explore Now</a>
+    <main>
+        <section class="hero-section hero-top">
+            <div class="hero-content">
+                <p class="hero-subheading">MBOGIWOOD PRODUCTIONS</p>
+                <h1 class="hero-title">EMPOWERING AFRICAN NARRATIVES</h1>
+                <p class="hero-description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="hero-image-top">
+                <img src="images/camera_man.jpg" alt="Person holding a camera">
+            </div>
+        </section>
+
+        <section class="content-block-reverse">
+            <div class="content-image">
+                <img src="images/woman_headwrap.jpg" alt="Woman with traditional headwrap">
+            </div>
+            <div class="content-text">
+                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet</h2>
+                <p>dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,</p>
+            </div>
+        </section>
+
+        <section class="film-gallery-section">
+            <div class="container film-grid">
+                <div class="film-item">
+                    <img src="images/that_film_1.jpg" alt="Scene from That Film">
+                    <h3>THAT FILM</h3>
+                    <p>magna aliquam erat</p>
+                </div>
+                <div class="film-item">
+                    <img src="images/that_film_2.jpg" alt="Scene from That Film">
+                    <h3>THAT FILM</h3>
+                    <p>sit amet, co</p>
+                </div>
+                <div class="film-item">
+                    <img src="images/that_film_3.jpg" alt="Scene from That Film">
+                    <h3>THAT FILM</h3>
+                    <p>magna</p>
+                </div>
+                <div class="film-item">
+                    <img src="images/that_film_4.jpg" alt="Scene from That Film">
+                    <h3>THAT FILM</h3>
+                    <p>ducing at nonummy tham student</p>
+                </div>
+                <div class="film-item">
+                    <img src="images/that_film_5.jpg" alt="Scene from That Film">
+                    <h3>THAT FILM</h3>
+                    <p>Lamem sit amet, somethi</p>
+                </div>
+                <div class="film-item">
+                    <img src="images/that_film_6.jpg" alt="Scene from That Film">
+                    <h3>THAT FILM</h3>
+                    <p>wor</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero-section hero-bottom">
+            <div class="hero-content-bottom">
+                <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet</h2>
+                <p>dolore magna aliquam erat volutpat.  Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</p>
+            </div>
+            <div class="hero-image-bottom">
+                <img src="images/woman_headwrap_2.jpg" alt="Woman with traditional headwrap looking down">
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <h2>Gallery</h2>
+                <div class="photo-grid">
+                    <img src="images/gallery_1.jpg" alt="Gallery image 1">
+                    <img src="images/gallery_2.jpg" alt="Gallery image 2">
+                    <img src="images/gallery_3.jpg" alt="Gallery image 3">
+                    <img src="images/gallery_4.jpg" alt="Gallery image 4">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>lets make magic </p>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="btn-talk">Lets talk </a>
+                <div class="footer-logo">
+                    <p>Mbog! </p>
+                    <p>wood </p>
+                    <p>PRODUCTIONS</p>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <section class="about">
-        <h2 class="section-title">About Us</h2>
-        <p>Brief introduction about Mbogiwood Productions PLC...</p>
-    </section>
-
-    <section class="featured-projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects">
-            <div class="project-item">
-                <img src="assets/images/project1.jpg" alt="Project 1">
-                <h3>Project Title 1</h3>
-                <p>Project description goes here...</p>
-            </div>
-            <div class="project-item">
-                <img src="assets/images/project2.jpg" alt="Project 2">
-                <h3>Project Title 2</h3>
-                <p>Project description goes here...</p>
-            </div>
-            <div class="project-item">
-                <img src="assets/images/project3.jpg" alt="Project 3">
-                <h3>Project Title 3</h3>
-                <p>Project description goes here...</p>
-            </div>
+        <div class="copyright">
+            <p>© 2025 Mbogiwood Productions PLC. All rights reserved. </p>
         </div>
-    </section>
-
-    <section class="call-to-action">
-        <h2 class="section-title">Join Us</h2>
-        <p>Direct users to view projects, careers, or contact us.</p>
-        <a href="careers.html" class="cta-button">Get Started</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Mbogiwood Productions PLC. All rights reserved.</p>
-        <ul>
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
     </footer>
 
-    <script src="js/main.js"></script>
 </body>
 </html>
