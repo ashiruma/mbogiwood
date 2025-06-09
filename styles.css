@@ -307,7 +307,7 @@ img {
     background-color: #e67e22;
     color: #1a1a1a;
     padding: 12px 25px;
-    border: none; /* Changed from border: none; to avoid issues with some browsers */
+    border: none;
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
@@ -633,6 +633,57 @@ img {
 .message.error {
     background-color: #dc3545; /* Red */
     color: white;
+}
+
+
+/* --- Additional CSS for Checkbox Group on Registration Page --- */
+
+.form-group.checkbox-group {
+    display: flex; /* Use flexbox to align checkbox and label */
+    align-items: center; /* Vertically align them */
+    margin-top: 25px; /* Add some space above the checkbox */
+    margin-bottom: 25px;
+}
+
+.form-group.checkbox-group input[type="checkbox"] {
+    width: auto; /* Allow checkbox to take its natural width */
+    margin-right: 10px; /* Space between checkbox and label */
+    appearance: none; /* Remove default browser checkbox style */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px; /* Custom checkbox size */
+    height: 20px;
+    border: 2px solid #e67e22; /* Orange border */
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative; /* For custom checkmark */
+    flex-shrink: 0; /* Prevent checkbox from shrinking */
+}
+
+/* Custom checkmark for checkbox */
+.form-group.checkbox-group input[type="checkbox"]:checked {
+    background-color: #e67e22; /* Orange background when checked */
+    border-color: #e67e22;
+}
+
+.form-group.checkbox-group input[type="checkbox"]:checked::before {
+    content: '\2713'; /* Unicode checkmark character */
+    display: block;
+    color: #1a1a1a; /* Dark color for checkmark */
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group.checkbox-group label {
+    margin-bottom: 0; /* Remove bottom margin from label in this group */
+    font-weight: normal; /* Adjust font weight */
+    color: #f4f4f4; /* Lighter color for label */
+    cursor: pointer;
 }
 
 
