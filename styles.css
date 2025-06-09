@@ -77,6 +77,7 @@ img {
     color: #e67e22; /* Orange hover effect */
 }
 
+/* Active Nav Link (from JS) */
 .main-nav ul li a.active-nav-link {
     color: #e67e22; /* Highlight active link with orange */
     border-bottom: 2px solid #e67e22; /* Add a subtle underline */
@@ -84,7 +85,7 @@ img {
 }
 
 
-/* Hero Sections */
+/* Hero Sections (Homepage) */
 .hero-section {
     display: flex;
     align-items: center;
@@ -175,7 +176,7 @@ img {
     line-height: 1.1;
 }
 
-/* Film Gallery Section */
+/* Film Gallery Section (Homepage) */
 .film-gallery-section {
     background-color: #1a1a1a;
     padding: 50px 0;
@@ -306,6 +307,7 @@ img {
     background-color: #e67e22;
     color: #1a1a1a;
     padding: 12px 25px;
+    border: none; /* Changed from border: none; to avoid issues with some browsers */
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
@@ -327,7 +329,7 @@ img {
 .footer-logo p:first-child {
     color: #e67e22; /* "Mbog!" in orange */
 }
-.footer-logo p:last-child {
+.footer-logo .logo-production-text { /* Specific class for "PRODUCTIONS" */
     font-size: 0.7em;
     line-height: 1;
     color: #ccc;
@@ -342,7 +344,7 @@ img {
 }
 
 
-/* --- New Page Specific Styles --- */
+/* --- New Page Specific Styles (News, Gallery, Careers, About Us) --- */
 
 .page-hero {
     background-color: #2c2c2c;
@@ -454,10 +456,11 @@ img {
 }
 
 .job-item .apply-btn,
-.btn-primary {
+.btn-primary { /* Combined with btn-primary for consistent styling */
     background-color: #e67e22;
     color: #1a1a1a;
     padding: 10px 20px;
+    border: none;
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
@@ -494,7 +497,146 @@ img {
     top: -2px;
 }
 
-/* Responsive adjustments for overall layout */
+
+/* --- Authentication Pages Specific Styles (Login, Register) --- */
+
+.auth-page-hero {
+    background-color: #333; /* Dark background */
+    color: #f4f4f4;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.auth-page-hero h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #e67e22; /* Orange heading */
+}
+
+.auth-page-hero p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.auth-form-section {
+    background-color: #1a1a1a;
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Ensure it takes up sufficient vertical space */
+}
+
+.auth-card {
+    background-color: #2c2c2c;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px; /* Max width for the card */
+    text-align: center;
+    color: #f4f4f4;
+}
+
+.auth-card h2 {
+    font-size: 2.2em;
+    color: #e67e22;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.form-group label {
+    display: block; /* Make label take its own line */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ccc;
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #3a3a3a;
+    color: #f4f4f4;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #e67e22; /* Orange focus border */
+    outline: none;
+    box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+}
+
+/* Re-defined here because btn-primary was also used for careers, but better to define it once */
+/* .btn-primary {
+    background-color: #e67e22;
+    color: #1a1a1a;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #d1701e;
+} */
+
+
+.auth-footer-text {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.auth-footer-text a {
+    color: #e67e22;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.auth-footer-text a:hover {
+    color: #d1701e;
+}
+
+/* Messages for feedback (e.g., success/error from JS) */
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.message.error {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+
+/* --- Responsive adjustments for overall layout --- */
 @media (max-width: 1024px) {
     .hero-top .hero-title {
         font-size: 3em;
@@ -599,7 +741,7 @@ img {
         margin-top: 10px;
     }
 
-    /* Responsive adjustments for new pages on 768px */
+    /* Responsive adjustments for specific pages on 768px */
     .page-hero {
         padding: 60px 20px;
     }
@@ -626,6 +768,20 @@ img {
     }
     .job-item h3, .news-item h3 {
         font-size: 1.3em;
+    }
+    .auth-page-hero h1 {
+        font-size: 2.5em;
+    }
+    .auth-card {
+        padding: 30px 20px;
+        margin: 0 15px; /* Add some margin on smaller screens */
+    }
+    .auth-card h2 {
+        font-size: 1.8em;
+    }
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 1em;
     }
 }
 
@@ -656,7 +812,7 @@ img {
         height: 200px; /* Smaller height for images on small screens */
     }
 
-    /* Responsive adjustments for new pages on 480px */
+    /* Responsive adjustments for specific pages on 480px */
     .page-hero h1 {
         font-size: 2em;
     }
@@ -668,5 +824,8 @@ img {
     }
     .gallery-page-grid .photo-grid img {
         height: 200px;
+    }
+    .auth-page-hero h1 {
+        font-size: 2em;
     }
 }
