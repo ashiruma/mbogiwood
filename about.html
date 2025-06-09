@@ -4,75 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Mbogiwood Productions</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
- <!-- Navigation Bar -->
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    </nav>
 
-    <!-- About Us Section -->
-    <section class="about-section">
+    <header class="main-header">
         <div class="container">
-            <h1>About Mbogiwood Productions</h1>
-            <p>Mbogiwood Productions is dedicated to telling authentic Kenyan stories through film, giving a voice to narratives often overlooked. Our mission is to revolutionize the Kenyan film industry by creating high-quality, culturally diverse productions accessible to all.</p>
-            
-            <h2>Our Vision</h2>
-            <p>To establish Mbogiwood as the 'Hollywood of Kenya and Africa', fostering a thriving creative industry for African storytellers.</p>
-
-            <h2>Our Mission</h2>
-            <p>Empowering Kenyan creatives by providing affordable film production resources, ensuring timely content distribution, and producing culturally relevant films.</p>
-
-            <h2>Our Values</h2>
-            <ul class="values-list">
-                <li> Authenticity – Staying true to Kenyan culture and narratives.</li>
-                <li> Impact – Creating films that educate, inspire, and entertain.</li>
-                <li> Collaboration – Bringing together talented creatives.</li>
-                <li> Innovation – Pushing boundaries in African storytelling.</li>
-            </ul>
-
-            <h2>Meet Our Team</h2>
-            <div class="team-container">
-                <div class="team-card">
-                    <img src="images/chrispine.jpg" alt="Chrispine Abala Ashiruma">
-                    <h3>Chrispine Abala Ashiruma</h3>
-                    <p>Director & Co-founder</p>
-                </div>
-                <!-- Add more team members as needed -->
+            <div class="logo-area">
+                <span class="logo-small">MBOGIWOOD PRODUCTIONS</span>
             </div>
-
-            <h2>Why Choose Us?</h2>
-            <p>Unlike mainstream Kenyan production companies, Mbogiwood Productions focuses on rich, non-comedy films that reflect diverse Kenyan stories. Our goal is to create an impact through accessible, high-quality content.</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery_page.html">Gallery</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-icon">
+                </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Mbogiwood Productions. All rights reserved.</p>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>About Mbogiwood Productions</h1>
+                <p>Our journey in empowering authentic African narratives through film.</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <h2 class="section-title">Our Vision</h2>
+                <p>At Mbogiwood Productions, we envision a world where African stories are told by African voices, reaching global audiences with their richness, diversity, and profound impact. We are committed to fostering creativity, empowering local talent, and producing high-quality cinematic experiences.</p>
+
+                <h2 class="section-title">Our Mission</h2>
+                <ul>
+                    <li>To produce compelling films that authentically represent African cultures, histories, and contemporary realities.</li>
+                    <li>To discover and nurture emerging talent in all aspects of filmmaking, from scriptwriting to directing and acting.</li>
+                    <li>To innovate in storytelling techniques and production methodologies, pushing the boundaries of African cinema.</li>
+                    <li>To build a sustainable platform that supports independent filmmakers and facilitates the distribution of their works.</li>
+                </ul>
+
+                <h2 class="section-title">Our History</h2>
+                <p>Founded in [Year], Mbogiwood Productions began as a passionate endeavor to fill a void in the mainstream representation of African narratives. Starting with [mention early project/milestone], we have grown to become a leading name in the industry, recognized for our commitment to excellence and cultural authenticity.</p>
+
+                <h2 class="section-title">Our Team</h2>
+                <p>We are a diverse team of award-winning directors, producers, writers, cinematographers, and production staff, united by a shared love for storytelling and a dedication to our craft. Learn more about our key team members [link to team page or section if applicable].</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>lets make magic</p>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="gallery_page.html">Gallery</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="btn-talk">Lets talk</a>
+                <div class="footer-logo">
+                    <p>Mbog!</p>
+                    <p>wood</p>
+                    <p>PRODUCTIONS</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Mbogiwood Productions PLC. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- JavaScript for Theme Toggle -->
-    <script>
-        function toggleTheme() {
-            let currentTheme = document.body.getAttribute("data-theme");
-            let newTheme = currentTheme === "dark" ? "light" : "dark";
-            document.body.setAttribute("data-theme", newTheme);
-            localStorage.setItem("theme", newTheme);
-        }
-
-        (function () {
-            let savedTheme = localStorage.getItem("theme") || "light";
-            document.body.setAttribute("data-theme", savedTheme);
-        })();
-    </script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
