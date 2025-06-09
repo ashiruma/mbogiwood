@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Mbogiwood Productions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-area">
+                <span class="logo-small">MBOGIWOOD PRODUCTIONS</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery_page.html">Gallery</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li> </ul>
+            </nav>
+            <div class="header-icon">
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="auth-page-hero">
+            <div class="container">
+                <h1>Join Mbogiwood Today!</h1>
+                <p>Create your account to start exploring and sharing African narratives.</p>
+            </div>
+        </section>
+
+        <section class="auth-form-section">
+            <div class="container">
+                <div class="auth-card">
+                    <h2>Register</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="is_content_creator" name="is_content_creator">
+                            <label for="is_content_creator">I want to sell films (become a Content Creator)</label>
+                        </div>
+                        <button type="submit" class="btn-primary">Register</button>
+                    </form>
+                    <p class="auth-footer-text">Already have an account? <a href="login.html">Login here.</a></p>
+                    <div id="message" class="message"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>lets make magic</p>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="gallery_page.html">Gallery</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-right">
+                <a href="#" class="btn-talk">Lets talk</a>
+                <div class="footer-logo">
+                    <p>Mbogi</p>
+                    <p>wood</p>
+                    <p class="logo-production-text">PRODUCTIONS</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Mbogiwood Productions PLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script> </body>
+</html>
