@@ -53,8 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('fetchCurrentUser: User data fetched successfully:', userData);
                 return userData;
             } else if (response.status === 401 || response.status === 403) {
-                console.warn('fetchCurrentUser: Access token expired or invalid. User needs to re-authenticate.');
-                // In a full app, you'd try to refresh the token here
+                console.warn('fetchCurrentUser: Access token expired or invalid. Clearing tokens.');
                 localStorage.removeItem('accessToken');
                 localStorage.removeItem('refreshToken');
                 return null;
@@ -84,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const filmCard = document.createElement('div');
             filmCard.className = 'movie-card';
             filmCard.innerHTML = `
-                <img src="${film.poster_image_url || 'images/default_poster.png'}" alt="Poster for <span class="math-inline">\{film\.title\}"\>
-<h3\></span>{film.title}</h3>
+                <img src="${film.poster_image_url || 'images/default_poster.png'}" alt="Poster for ${film.title}">
+                <h3>${film.title}</h3>
                 <p>Genre: ${film.genre}</p>
                 <p>Director: ${film.director}</p>
                 <p>Year: ${film.release_year}</p>
@@ -104,8 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const videoUrl = playButton.dataset.videoUrl;
                         if (videoUrl) {
                             alert(`Playing film: ${film.title}\nVideo URL: ${videoUrl}\n(Actual video player integration will go here!)`);
-                            // Here you would open a modal with a video player
-                            // e.g., openVideoPlayerModal(videoUrl);
                         } else {
                             alert('Video URL not available.');
                         }
@@ -116,8 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (purchaseButton) {
                     purchaseButton.addEventListener('click', () => {
                         alert(`Proceeding to purchase ${film.title} for KES ${parseFloat(film.price).toFixed(2)}.\n(Payment integration will go here!)`);
-                        // Here you would initiate the payment process
-                        // e.g., initiatePayment(film.id, film.price);
                     });
                 }
             }
@@ -136,14 +131,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Login Form Handling ---
+    // --- Login Page Specific Logic (Role Selection & Form Submission) ---
     const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
+    const loginRoleSelectDiv = document.querySelector('.login-role-select');
+    const roleButtonsDiv = document.querySelector('.role-buttons');
+    const loginAsViewerBtn = document.getElementById('loginAsViewerBtn');
+    const loginAsCreatorBtn = document.getElementById('loginAsCreatorBtn');
+    const loginRoleInput = document.getElementById('loginRole');
+    const backToRoleSelectBtn = document.getElementById('backToRoleSelect');
+
+    if (loginForm) { // Only run if on the login page
+        // Handle role selection buttons
+        if (loginAsViewerBtn) {
+            loginAsViewerBtn.addEventListener('click', () => {
+                loginRoleInput.value = 'viewer';
+                loginForm.style.display = 'block';
+                if (loginRoleSelectDiv) loginRoleSelectDiv.style.display = 'none';
+                if (roleButtonsDiv) roleButtonsDiv.style.display = 'none';
+            });
+        }
+        if (loginAsCreatorBtn) {
+            loginAsCreatorBtn.addEventListener('click', () => {
+                loginRoleInput.value = 'creator';
+                loginForm.style.display = 'block';
+                if (loginRoleSelectDiv) loginRoleSelectDiv.style.display = 'none';
+                if (roleButtonsDiv) roleButtonsDiv.style.display = 'none';
+            });
+        }
+        if (backToRoleSelectBtn) {
+            backToRoleSelectBtn.addEventListener('click', () => {
+                loginForm.style.display = 'none';
+                if (loginRoleSelectDiv) loginRoleSelectDiv.style.display = 'block';
+                if (roleButtonsDiv) roleButtonsDiv.style.display = 'flex'; // Use flex for layout
+                loginRoleInput.value = '';
+                loginForm.reset(); // Clear form fields
+                hideMessage('message');
+            });
+        }
+
+        // Handle the actual login form submission
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const username = loginForm.username.value.trim();
             const password = loginForm.password.value.trim();
+            const selectedLoginRole = loginRoleInput.value; // 'viewer' or 'creator'
             const messageDivId = 'message';
 
             hideMessage(messageDivId);
@@ -169,27 +201,44 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('refreshToken', data.refresh);
                     displayMessage(messageDivId, 'Login successful!', 'success');
 
-                    // --- CRITICAL REDIRECTION LOGIC (Consolidated here) ---
-                    const user = await fetchCurrentUser(); // Fetch user details immediately
+                    // --- CRITICAL REDIRECTION LOGIC ---
+                    const user = await fetchCurrentUser(); // Fetch user details IMMEDIATELY
                     console.log('Login Form: User object after successful fetchCurrentUser:', user);
 
                     if (user) {
+                        console.log('Login Form: Selected Login Role:', selectedLoginRole);
                         console.log('Login Form: User is_content_creator:', user.is_content_creator);
                         console.log('Login Form: User is_staff:', user.is_staff);
                         console.log('Login Form: User is_superuser:', user.is_superuser);
 
-                        if (user.is_staff || user.is_superuser) { // Admin users (Django staff/superuser)
+
+                        // Admin check (highest priority)
+                        if (user.is_staff || user.is_superuser) {
                             console.log('Login Form: Redirecting to Admin Dashboard.');
-                            window.location.href = `${API_BASE_URL}/admin/`; // Redirect to Django admin
-                        } else if (user.is_content_creator) { // Content creators
+                            window.location.href = `${API_BASE_URL}/admin/`;
+                        }
+                        // Then check based on selected role AND actual user flags
+                        else if (selectedLoginRole === 'creator' && user.is_content_creator) {
                             console.log('Login Form: Redirecting to Creator Dashboard.');
                             window.location.href = 'creator_dashboard.html';
-                        } else { // Default to viewer dashboard
+                        }
+                        else if (selectedLoginRole === 'viewer' && user.is_film_viewer) {
                             console.log('Login Form: Redirecting to Viewer Dashboard.');
                             window.location.href = 'viewer_dashboard.html';
                         }
+                        // Fallback if role selected doesn't match actual user type or other issues
+                        else {
+                            let redirectMessage = 'Logged in, but your role does not match the selected option or is not fully set up. Redirecting to general view.';
+                            if (selectedLoginRole === 'creator' && !user.is_content_creator) {
+                                redirectMessage = 'You logged in as a Creator, but your account is not marked as a Content Creator. Please register as a Creator or contact support.';
+                            } else if (selectedLoginRole === 'viewer' && !user.is_film_viewer) {
+                                redirectMessage = 'You logged in as a Viewer, but your account is not marked as a Film Viewer. Please contact support.';
+                            }
+                            displayMessage(messageDivId, redirectMessage, 'error');
+                            console.warn('Login Form: Role mismatch or no matching dashboard. Redirecting to index.html.');
+                            setTimeout(() => { window.location.href = 'index.html'; }, 3000); // Redirect to homepage after message
+                        }
                     } else {
-                        // Fallback if user data fetch fails after login, redirect to a default
                         console.error('Login Form: Failed to retrieve user details after token. Redirecting to index.');
                         window.location.href = 'index.html';
                     }
@@ -205,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Registration Form Handling ---
+    // --- Registration Form Handling (already defined, copy here) ---
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', async (e) => {
@@ -230,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Basic password strength check (can be enhanced on backend)
             if (password.length < 8) {
                 displayMessage(messageDivId, 'Password must be at least 8 characters long.', 'error');
                 return;
@@ -246,7 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         username,
                         email,
                         password,
-                        is_content_creator: isContentCreator, // Send boolean value
+                        is_content_creator: isContentCreator,
+                        // For a new viewer, is_film_viewer defaults to true in Django model
                     }),
                 });
 
@@ -280,39 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Main Logic for Dashboard Redirection / Page Initialization ---
-    // This runs when any page loads, checks if it's a dashboard, and if user is logged in
-    const dashboardUsernameSpan = document.getElementById('dashboardUsername');
-    if (dashboardUsernameSpan) { // Only run if on a dashboard page (has this element)
-        fetchCurrentUser().then(user => {
-            if (user) {
-                dashboardUsernameSpan.textContent = user.username;
-
-                // Dashboard specific logic
-                if (window.location.pathname.includes('viewer_dashboard.html')) {
-                    console.log('Initializing Viewer Dashboard for:', user.username);
-                    // Placeholder for fetching and rendering films for viewers
-                    displayMessage('filmsList', 'Loading available films...', 'info');
-                    displayMessage('purchasedFilmsList', 'Loading purchased films...', 'info');
-
-                } else if (window.location.pathname.includes('creator_dashboard.html')) {
-                    console.log('Initializing Creator Dashboard for:', user.username);
-                    // Placeholder for fetching and rendering creator's uploaded films, sales, payouts
-                    displayMessage('creatorFilmsList', 'Loading your uploaded films...', 'info');
-                    displayMessage('salesPayoutsSummary', 'Loading sales data...', 'info');
-
-                }
-            } else {
-                // If user not logged in or token invalid, redirect to login
-                console.log('User not logged in on dashboard page. Redirecting to login.');
-                alert('You are not logged in. Please log in to access the dashboard.');
-                window.location.href = 'login.html';
-            }
-        });
-    }
-
     // --- Highlight active navigation link (basic) ---
-    // (Existing functionality, ensure it still works with new links)
     const currentPath = window.location.pathname.split('/').pop();
     const navLinks = document.querySelectorAll('.main-nav ul li a');
     navLinks.forEach(link => {
@@ -320,4 +337,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html') ||
             (window.location.pathname.includes('viewer_dashboard.html') && linkHref === 'viewer_dashboard.html') ||
             (window.location.pathname.includes('creator_dashboard.html') && linkHref === 'creator_dashboard.html')) {
-            link.classList
+            link.classList.add('active-nav-link');
+        }
+    });
+
+    // --- "Lets talk" button handler (existing, ensure still works) ---
+    const letsTalkBtn = document.querySelector('.btn-talk');
+    if (letsTalkBtn) {
+        letsTalkBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Thank you for your interest! We will get back to you soon.');
+            console.log('Lets talk button clicked!');
+        });
+    }
+
+    // --- Placeholder for other frontend functionality (e.g., search) ---
+});
