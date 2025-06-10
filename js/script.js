@@ -34,10 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchCurrentUser() {
         const accessToken = getAccessToken();
         if (!accessToken) {
-            return null; // No token, no user
+            console.log('fetchCurrentUser: No access token found.');
+            return null;
         }
 
         try {
+            console.log('fetchCurrentUser: Attempting to fetch user data with token...');
             const response = await fetch(`${API_BASE_URL}/api/accounts/me/`, {
                 method: 'GET',
                 headers: {
@@ -48,17 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const userData = await response.json();
+                console.log('fetchCurrentUser: User data fetched successfully:', userData);
                 return userData;
             } else if (response.status === 401 || response.status === 403) {
-                // Token expired or invalid, try refreshing (we'll add refresh logic later)
-                console.warn('Access token expired or invalid. User needs to re-authenticate.');
+                console.warn('fetchCurrentUser: Access token expired or invalid. User needs to re-authenticate.');
+                // In a full app, you'd try to refresh the token here
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('refreshToken');
                 return null;
             } else {
-                console.error('Failed to fetch current user:', response.status, await response.text());
+                console.error('fetchCurrentUser: Failed to fetch current user. Status:', response.status, 'Response:', await response.text());
                 return null;
             }
         } catch (error) {
-            console.error('Network error fetching current user:', error);
+            console.error('fetchCurrentUser: Network error fetching current user:', error);
             return null;
         }
     }
@@ -79,8 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const filmCard = document.createElement('div');
             filmCard.className = 'movie-card';
             filmCard.innerHTML = `
-                <img src="${film.poster_image_url || 'images/default_poster.png'}" alt="Poster for ${film.title}">
-                <h3>${film.title}</h3>
+                <img src="${film.poster_image_url || 'images/default_poster.png'}" alt="Poster for <span class="math-inline">\{film\.title\}"\>
+<h3\></span>{film.title}</h3>
                 <p>Genre: ${film.genre}</p>
                 <p>Director: ${film.director}</p>
                 <p>Year: ${film.release_year}</p>
@@ -131,85 +136,178 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Login Form Handling ---
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = loginForm.username.value.trim();
+            const password = loginForm.password.value.trim();
+            const messageDivId = 'message';
+
+            hideMessage(messageDivId);
+
+            if (!username || !password) {
+                displayMessage(messageDivId, 'Please enter both username/email and password.', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/accounts/token/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('accessToken', data.access);
+                    localStorage.setItem('refreshToken', data.refresh);
+                    displayMessage(messageDivId, 'Login successful!', 'success');
+
+                    // --- CRITICAL REDIRECTION LOGIC (Consolidated here) ---
+                    const user = await fetchCurrentUser(); // Fetch user details immediately
+                    console.log('Login Form: User object after successful fetchCurrentUser:', user);
+
+                    if (user) {
+                        console.log('Login Form: User is_content_creator:', user.is_content_creator);
+                        console.log('Login Form: User is_staff:', user.is_staff);
+                        console.log('Login Form: User is_superuser:', user.is_superuser);
+
+                        if (user.is_staff || user.is_superuser) { // Admin users (Django staff/superuser)
+                            console.log('Login Form: Redirecting to Admin Dashboard.');
+                            window.location.href = `${API_BASE_URL}/admin/`; // Redirect to Django admin
+                        } else if (user.is_content_creator) { // Content creators
+                            console.log('Login Form: Redirecting to Creator Dashboard.');
+                            window.location.href = 'creator_dashboard.html';
+                        } else { // Default to viewer dashboard
+                            console.log('Login Form: Redirecting to Viewer Dashboard.');
+                            window.location.href = 'viewer_dashboard.html';
+                        }
+                    } else {
+                        // Fallback if user data fetch fails after login, redirect to a default
+                        console.error('Login Form: Failed to retrieve user details after token. Redirecting to index.');
+                        window.location.href = 'index.html';
+                    }
+                } else {
+                    const errorMessage = data.detail || data.non_field_errors || 'Login failed. Please check your credentials.';
+                    displayMessage(messageDivId, errorMessage, 'error');
+                    console.error('Login error:', data);
+                }
+            } catch (error) {
+                console.error('Network error during login:', error);
+                displayMessage(messageDivId, 'Network error. Please try again later.', 'error');
+            }
+        });
+    }
+
+    // --- Registration Form Handling ---
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = registerForm.username.value.trim();
+            const email = registerForm.email.value.trim();
+            const password = registerForm.password.value.trim();
+            const confirmPassword = registerForm.confirm_password.value.trim();
+            const isContentCreator = registerForm.is_content_creator.checked;
+            const messageDivId = 'message';
+
+            hideMessage(messageDivId);
+
+            if (!username || !email || !password || !confirmPassword) {
+                displayMessage(messageDivId, 'All fields are required.', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                displayMessage(messageDivId, 'Passwords do not match.', 'error');
+                return;
+            }
+
+            // Basic password strength check (can be enhanced on backend)
+            if (password.length < 8) {
+                displayMessage(messageDivId, 'Password must be at least 8 characters long.', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/accounts/register/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username,
+                        email,
+                        password,
+                        is_content_creator: isContentCreator, // Send boolean value
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    displayMessage(messageDivId, 'Registration successful! You can now log in.', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    let errorMessage = 'Registration failed. Please try again.';
+                    if (data.username) {
+                        errorMessage = `Username: ${data.username.join(', ')}`;
+                    } else if (data.email) {
+                        errorMessage = `Email: ${data.email.join(', ')}`;
+                    } else if (data.password) {
+                        errorMessage = `Password: ${data.password.join(', ')}`;
+                    } else if (data.detail) {
+                        errorMessage = data.detail;
+                    } else if (data.non_field_errors) {
+                        errorMessage = data.non_field_errors.join(', ');
+                    }
+                    displayMessage(messageDivId, errorMessage, 'error');
+                    console.error('Registration error:', data);
+                }
+            } catch (error) {
+                console.error('Network error during registration:', error);
+                displayMessage(messageDivId, 'Network error. Please try again later.', 'error');
+            }
+        });
+    }
+
     // --- Main Logic for Dashboard Redirection / Page Initialization ---
+    // This runs when any page loads, checks if it's a dashboard, and if user is logged in
     const dashboardUsernameSpan = document.getElementById('dashboardUsername');
-    if (dashboardUsernameSpan) {
-        // If on a dashboard page, fetch user data
+    if (dashboardUsernameSpan) { // Only run if on a dashboard page (has this element)
         fetchCurrentUser().then(user => {
             if (user) {
                 dashboardUsernameSpan.textContent = user.username;
 
                 // Dashboard specific logic
                 if (window.location.pathname.includes('viewer_dashboard.html')) {
-                    // Fetch and render all approved films for viewers
-                    // For now, this is a placeholder. We need a backend API for films.
-                    // renderFilms(mockFilmsData, 'filmsList'); // Using mock data
-                    // renderFilms([], 'purchasedFilmsList', true); // No purchased films initially
+                    console.log('Initializing Viewer Dashboard for:', user.username);
+                    // Placeholder for fetching and rendering films for viewers
                     displayMessage('filmsList', 'Loading available films...', 'info');
                     displayMessage('purchasedFilmsList', 'Loading purchased films...', 'info');
-                    // Actual fetching will happen here:
-                    // fetchFilmsForViewer(user.id).then(films => renderFilms(films, 'filmsList'));
-                    // fetchPurchasedFilms(user.id).then(films => renderFilms(films, 'purchasedFilmsList', true));
 
                 } else if (window.location.pathname.includes('creator_dashboard.html')) {
-                    // Fetch and render creator's uploaded films, sales, payouts
-                    // renderFilms(mockCreatorFilms, 'creatorFilmsList'); // Using mock data
-                    // updateSalesPayoutsSummary(mockSalesData);
+                    console.log('Initializing Creator Dashboard for:', user.username);
+                    // Placeholder for fetching and rendering creator's uploaded films, sales, payouts
                     displayMessage('creatorFilmsList', 'Loading your uploaded films...', 'info');
                     displayMessage('salesPayoutsSummary', 'Loading sales data...', 'info');
-                    // Actual fetching will happen here:
-                    // fetchCreatorFilms(user.id).then(films => renderFilms(films, 'creatorFilmsList'));
-                    // fetchSalesPayouts(user.id).then(data => updateSalesPayoutsSummary(data));
 
                 }
             } else {
                 // If user not logged in or token invalid, redirect to login
+                console.log('User not logged in on dashboard page. Redirecting to login.');
                 alert('You are not logged in. Please log in to access the dashboard.');
                 window.location.href = 'login.html';
             }
-        });
-    }
-
-    // --- Login Form Handling (already defined in previous step, copy here) ---
-    // (This part remains the same as in the previous js/script.js update)
-    // ... (Your loginForm event listener code) ...
-
-    // --- Registration Form Handling (already defined in previous step, copy here) ---
-    // (This part remains the same as in the previous js/script.js update)
-    // ... (Your registerForm event listener code) ...
-
-    // --- Main Login/Registration Redirection after successful form submission ---
-    // This is the core redirection logic after a successful login/registration
-    // This logic is best placed after the API calls in loginForm/registerForm
-    // where you set localStorage.setItem and then window.location.href = 'index.html';
-    // We'll change the 'index.html' redirect below.
-
-    // This section directly handles what happens after a successful login API call.
-    // We need to fetch user data immediately after successful login to determine redirection.
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            // ... (existing login logic) ...
-            if (response.ok) {
-                localStorage.setItem('accessToken', data.access);
-                localStorage.setItem('refreshToken', data.refresh);
-                displayMessage(messageDivId, 'Login successful!', 'success');
-
-                const user = await fetchCurrentUser(); // Fetch user details immediately
-                if (user) {
-                    if (user.is_content_creator) {
-                        window.location.href = 'creator_dashboard.html';
-                    } else if (user.is_staff || user.is_superuser) { // Django admin user
-                        window.location.href = `${API_BASE_URL}/admin/`; // Redirect to Django admin
-                    } else { // Default to viewer dashboard
-                        window.location.href = 'viewer_dashboard.html';
-                    }
-                } else {
-                    // Fallback if user data fetch fails after login, redirect to a default
-                    window.location.href = 'index.html';
-                }
-            }
-            // ... (rest of login error handling) ...
         });
     }
 
@@ -222,19 +320,4 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html') ||
             (window.location.pathname.includes('viewer_dashboard.html') && linkHref === 'viewer_dashboard.html') ||
             (window.location.pathname.includes('creator_dashboard.html') && linkHref === 'creator_dashboard.html')) {
-            link.classList.add('active-nav-link');
-        }
-    });
-
-    // --- "Lets talk" button handler (existing, ensure still works) ---
-    const letsTalkBtn = document.querySelector('.btn-talk');
-    if (letsTalkBtn) {
-        letsTalkBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Thank you for your interest! We will get back to you soon.');
-            console.log('Lets talk button clicked!');
-        });
-    }
-
-    // --- Placeholder for other frontend functionality (e.g., search) ---
-});
+            link.classList
