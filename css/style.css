@@ -57,6 +57,7 @@ img {
 }
 
 /* REMOVED .logo-area and its content styling here from previous versions */
+/* .logo-area, .header-logo-icon, .logo-small are no longer used for the left header logo */
 
 .main-nav ul {
     list-style: none;
@@ -66,7 +67,6 @@ img {
     gap: 25px;
     margin-right: auto; /* Push navigation to the left as much as possible */
     /* This makes navigation appear on the left, pushing the logo to the far right. */
-    /* If you want nav to be left of logo, but still right-aligned overall, remove margin-right: auto */
 }
 
 .main-nav ul li a {
@@ -97,7 +97,6 @@ img {
     height: 60px;
     object-fit: contain; /* Contain the entire logo, don't crop */
     border-radius: 0; /* No border-radius if it's not a circle */
-    /* Remove background-color if it had one from previous .header-icon */
 }
 
 
@@ -337,13 +336,8 @@ img {
     align-items: flex-start;
 }
 
-.footer-logo-icon { /* Styling for the new footer logo placeholder */
-    width: 40px; /* Smaller size for footer */
-    height: 40px;
-    object-fit: cover;
-    margin-bottom: 15px; /* Space between logo and text */
-    border-radius: 50%; /* If you want it round */
-}
+/* Removed .footer-logo-icon styling from here */
+/* .footer-logo-icon, .footer-left p (for logo text) are no longer used for the left footer logo */
 
 .footer-left p {
     font-size: 1.5em;
