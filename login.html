@@ -37,12 +37,17 @@
             </div>
         </section>
 
-        <section class="auth-form-section">
+      <section class="auth-form-section">
             <div class="container">
                 <div class="auth-card">
-                    <h2>Login</h2>
-                    <form id="loginForm">
-                        <div class="form-group">
+                    <h2>Login to Mbogiwood</h2>
+                    <p class="login-role-select">Are you a?</p>
+                    <div class="role-buttons">
+                        <button type="button" id="loginAsViewerBtn" class="btn-role">Film Viewer</button>
+                        <button type="button" id="loginAsCreatorBtn" class="btn-role">Content Creator</button>
+                    </div>
+
+                    <form id="loginForm" style="display: none;"> <div class="form-group">
                             <label for="username">Username or Email:</label>
                             <input type="text" id="username" name="username" required>
                         </div>
@@ -50,10 +55,12 @@
                             <label for="password">Password:</label>
                             <input type="password" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn-primary">Login</button>
+                        <input type="hidden" id="loginRole" name="login_role" value=""> <button type="submit" class="btn-primary">Login</button>
+                        <button type="button" id="backToRoleSelect" class="btn-secondary">Back</button>
                     </form>
+
                     <p class="auth-footer-text">Don't have an account? <a href="register.html">Register here.</a></p>
-                    <p class="auth-footer-text"><a href="<p class="auth-footer-text"><a href="http://127.0.0.1:8000/password_reset/">Forgot password?</a></p>
+                    <p class="auth-footer-text"><a href="#">Forgot password?</a></p>
                     <div id="message" class="message"></div>
                 </div>
             </div>
