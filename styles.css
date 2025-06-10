@@ -410,22 +410,18 @@ img {
     background-color: #d1701e;
 }
 
-.footer-logo p {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.2em;
-    line-height: 0.8;
-    margin: 0;
-    color: #f4f4f4;
+/* Styling for the new full image logo in the footer */
+.footer-logo-container {
+    margin-top: 20px; /* Space from the 'Lets talk' button */
+    display: flex; /* To center the image if needed */
+    justify-content: flex-end; /* Align to the right within footer-right */
+    width: 100%; /* Ensure it takes full available width for flex alignment */
 }
-.footer-logo p:first-child {
-    color: #e67e22;
-}
-.footer-logo .logo-production-text {
-    font-size: 0.7em;
-    line-height: 1;
-    color: #ccc;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+
+.footer-full-logo {
+    max-width: 150px; /* Adjust max width as needed for your logo size */
+    height: auto;
+    display: block; /* Ensures it behaves like a block element */
 }
 
 .copyright {
