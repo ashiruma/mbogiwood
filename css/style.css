@@ -994,3 +994,143 @@ img {
         font-size: 2em;
     }
 }
+/* --- Dashboard Specific Styles --- */
+
+.form-card { /* Reusing auth-card styles as a base for forms/info cards */
+    background-color: #3d2325;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+    text-align: left; /* Ensure form content aligns left */
+}
+
+.form-card textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #5a3d3f;
+    border-radius: 5px;
+    background-color: #492e30;
+    color: #f4f4f4;
+    font-size: 1em;
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing */
+}
+.form-card small {
+    display: block;
+    font-size: 0.85em;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.info-card {
+    background-color: #3d2325;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+}
+
+.info-card p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.info-card span {
+    font-weight: bold;
+    color: #e67e22; /* Highlight values */
+}
+
+/* Ensure movie-grid for dashboards also wraps correctly */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+    justify-content: center; /* Center items if they don't fill a row */
+}
+
+/* Specific styling for dashboard movie cards (can be similar to homepage) */
+.movie-card {
+    background-color: #291011; /* Darker background for individual movie cards */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #f4f4f4;
+    transition: transform 0.2s ease;
+    padding-bottom: 15px; /* Add padding at bottom */
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 200px; /* Consistent height for movie posters */
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.movie-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: #e67e22;
+}
+
+.movie-card p {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.movie-card .price {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #e67e22;
+    margin-top: 10px;
+}
+
+.movie-card .buy-btn {
+    background-color: #e67e22;
+    color: #1a1a1a;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    display: inline-block; /* Make button behave correctly */
+}
+
+.movie-card .buy-btn:hover {
+    background-color: #d1701e;
+}
+
+
+/* Responsive adjustments for dashboards */
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller cards on mobile */
+    }
+    .movie-card {
+        padding-bottom: 10px;
+    }
+    .movie-card img {
+        height: 150px;
+    }
+    .form-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .movie-card img {
+        height: 200px; /* Taller on single column */
+    }
+}
