@@ -142,6 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         errorMessage = `Password: ${data.password.join(', ')}`;
                     } else if (data.detail) {
                         errorMessage = data.detail;
+                    } else if (data.non_field_errors) {
+                        errorMessage = data.non_field_errors.join(', ');
                     }
                     displayMessage(messageDivId, errorMessage, 'error');
                     console.error('Registration error:', data);
@@ -179,4 +181,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // You can re-integrate your static search logic here if needed,
     // or adapt it to call the backend API for dynamic movie search later.
 });
-
