@@ -1134,3 +1134,52 @@ img {
         height: 200px; /* Taller on single column */
     }
 }
+
+/* --- Login Page Role Selection Styles --- */
+.auth-card .login-role-select {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #f4f4f4;
+}
+
+.auth-card .role-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.auth-card .btn-role {
+    background-color: #e67e22;
+    color: #1a1a1a;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1; /* Make buttons take equal space */
+    max-width: 180px;
+}
+
+.auth-card .btn-role:hover {
+    background-color: #d1701e;
+}
+
+.auth-card .btn-secondary {
+    background-color: #5a3d3f; /* A darker, subtle color */
+    color: #f4f4f4;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.auth-card .btn-secondary:hover {
+    background-color: #492e30;
+}
