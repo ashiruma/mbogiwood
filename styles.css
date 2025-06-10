@@ -4,7 +4,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: #f4f4f4; /* Light text color for dark backgrounds */
-    background-color: #291011; /* Changed to new color #291011 */
+    background-color: #291011; /* Main site background color */
 }
 
 .container {
@@ -37,34 +37,47 @@ img {
 
 /* Header */
 .main-header {
-    background-color: #291011; /* Changed to new color #291011 */
+    background-color: transparent; /* Make header background transparent initially */
+    position: absolute; /* Position over the hero image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Ensure it's on top of other content */
     color: #f4f4f4;
     padding: 10px 0;
-    border-bottom: 1px solid #3d2325; /* Adjusted border color */
+    /* Removed bottom border, as it floats over the hero image */
 }
 
 .main-header .container {
     display: flex;
-    justify-content: space-between; /* Space out logo, nav, icon */
+    justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    height: 60px; /* Give header a fixed height for consistency */
+    height: 80px; /* Increased height for visibility */
 }
 
 .logo-area {
     display: flex;
     align-items: center;
-    flex-shrink: 0; /* Prevent shrinking on smaller screens */
+    flex-shrink: 0;
+}
+
+.header-logo-icon {
+    width: 50px; /* Size of the logo icon */
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50%; /* If you want it round */
 }
 
 .logo-area .logo-small {
-    font-family: 'Oswald', sans-serif; /* Use Oswald for the small logo text too */
-    font-size: 0.9em; /* Slightly larger to be legible */
-    font-weight: 700; /* Bold */
-    color: #e67e22; /* Orange color */
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: #e67e22;
     text-transform: uppercase;
     letter-spacing: 1px;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap;
 }
 
 .main-nav ul {
@@ -72,7 +85,7 @@ img {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 25px; /* Space between nav items */
+    gap: 25px;
 }
 
 .main-nav ul li a {
@@ -83,66 +96,119 @@ img {
 }
 
 .main-nav ul li a:hover,
-.main-nav ul li a.active-nav-link { /* Combined active and hover states */
-    color: #e67e22; /* Orange hover/active effect */
-    border-bottom: 2px solid #e67e22; /* Underline for active/hover */
+.main-nav ul li a.active-nav-link {
+    color: #e67e22;
+    border-bottom: 2px solid #e67e22;
     padding-bottom: 3px;
 }
 
 .header-icon {
-    /* Assuming a placeholder icon here, if using Font Awesome or custom image */
-    width: 24px; /* Adjust size */
-    height: 24px; /* Adjust size */
-    background-color: #e67e22; /* Example: a colored square */
-    border-radius: 50%; /* Make it round */
-    margin-left: 20px; /* Space from nav */
-    display: flex; /* To center icon if it's content */
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 50%;
+    margin-left: 20px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    color: #1a1a1a; /* Icon color */
+    color: #1a1a1a;
     font-size: 1.2em;
 }
 
 
-/* Hero Sections (Homepage) */
-.hero-section {
+/* --- Full-Page Hero Section (index.html) --- */
+.full-height-hero {
+    height: 100vh; /* Full viewport height */
+    position: relative; /* For absolute positioning of content and overlay */
+    overflow: hidden; /* Hide any overflow from image */
+    background-color: #291011; /* Fallback background */
+    background-image: url('../images/camera_man.jpg'); /* The background image */
+    background-size: cover; /* Cover the entire area */
+    background-position: center bottom; /* Position from the bottom to show hands */
+    background-repeat: no-repeat;
+    display: flex; /* Flexbox for content alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: flex-start; /* Align content to the start (left) */
+    text-align: left; /* Ensure text alignment is left */
+}
+
+/* Gradient overlay for the fade effect */
+.full-height-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, #291011 0%, rgba(41, 16, 17, 0.8) 20%, rgba(41, 16, 17, 0) 60%);
+    /* From bottom (#291011) to transparent upwards, covering hands */
+    z-index: 1; /* Place above image, below content */
+}
+
+.full-height-hero .hero-content {
+    position: relative; /* Ensure content is above the gradient */
+    z-index: 2;
+    flex: none; /* Do not flex; content width is defined by its own padding/max-width */
+    width: 50%; /* Adjust width to take left half of the page */
+    padding: 0 40px 0 100px;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Hero Section text styles for the full-height hero */
+.full-height-hero .hero-subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em; /* Slightly larger */
+    font-weight: bold;
+    color: #e67e22;
+    text-transform: uppercase;
+    letter-spacing: 3px; /* More prominent spacing */
+    margin-bottom: 15px;
+}
+
+.full-height-hero .hero-title {
+    font-size: 5.5em; /* Significantly larger as in PDF */
+    margin-bottom: 25px;
+    line-height: 1; /* Tighter line height for large text */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6); /* More prominent shadow */
+}
+
+.full-height-hero .hero-description {
+    font-size: 1.2em; /* Slightly larger for readability */
+    line-height: 1.8;
+    max-width: 90%; /* Limit width for readability */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* --- Regular Hero Sections (Other Pages) - unaffected by full-height-hero changes --- */
+.hero-section:not(.full-height-hero) { /* Applies to hero-sections that are NOT full-height-hero */
+    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    padding: 80px 0;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center content horizontally */
-    padding: 50px 0;
+    justify-content: center;
     color: #f4f4f4;
 }
-
-.hero-top {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
-    padding-top: 80px; /* More padding at top to separate from header */
-    padding-bottom: 80px;
+.hero-section:not(.full-height-hero) .hero-content,
+.hero-section:not(.full-height-hero) .hero-content-bottom {
+    flex: 1;
+    padding: 0 40px;
 }
-
-/* Ensure the hero-content and hero-image take equal space, and adjust padding */
-.hero-section .hero-content {
-    flex: 1; /* Take available space */
-    padding: 0 40px 0 100px; /* Adjust padding for visual balance, more left padding */
-}
-
-.hero-section .hero-image-top {
-    flex: 1; /* Take available space */
+.hero-section:not(.full-height-hero) .hero-image-top,
+.hero-section:not(.full-height-hero) .hero-image-bottom {
+    flex: 1;
     display: flex;
-    justify-content: flex-end; /* Align image to the right within its flex item */
+    justify-content: center;
     align-items: center;
-    padding-right: 100px; /* Add right padding */
 }
-
-.hero-section .hero-image-top img {
+.hero-section:not(.full-height-hero) .hero-image-top img,
+.hero-section:not(.full-height-hero) .hero-image-bottom img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 8px; /* Slightly rounded corners for the image */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Add a subtle shadow */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
-
-.hero-top .hero-subheading {
-    font-family: 'Montserrat', sans-serif; /* Keep Montserrat for subheading */
+.hero-top:not(.full-height-hero) .hero-subheading { /* To ensure normal hero subheadings stay as before */
     font-size: 0.8em;
     font-weight: bold;
     color: #e67e22;
@@ -150,25 +216,19 @@ img {
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
-
-.hero-top .hero-title {
-    font-size: 4em; /* Make the title larger as in the PDF */
-    margin-bottom: 25px;
+.hero-top:not(.full-height-hero) .hero-title { /* To ensure normal hero titles stay as before */
+    font-size: 3.5em;
+    margin-bottom: 20px;
     line-height: 1.1;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Add subtle text shadow for pop */
+    text-shadow: none;
 }
 
-.hero-top .hero-description {
-    font-size: 1.1em;
-    line-height: 1.8;
-    max-width: 80%; /* Limit width for readability */
-}
 
-/* Content Block (Image Left, Text Right) */
+/* Content Block (Image Left, Text Right) - Remove Background */
 .content-block-reverse {
     display: flex;
     align-items: center;
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: transparent; /* Made transparent */
     padding: 50px 0;
     color: #f4f4f4;
 }
@@ -181,12 +241,12 @@ img {
 .content-block-reverse .content-text {
     flex: 1;
     padding: 0 40px;
-    background-color: #e67e22; /* Orange background for text block */
-    color: #1a1a1a; /* Dark text for orange */
+    background-color: transparent; /* Made transparent */
+    color: #f4f4f4; /* Ensure text remains visible on the dark background */
     padding: 40px; /* Internal padding for text */
-    margin-right: -40px; /* Pull text block slightly over image */
-    z-index: 1; /* Ensure it's above image */
-    position: relative;
+    margin-right: 0; /* Remove negative margin, as it's not overlapping a distinct block */
+    z-index: auto; /* Reset z-index */
+    position: static; /* Reset positioning */
 }
 
 .content-block-reverse .content-text h2 {
@@ -195,21 +255,21 @@ img {
     line-height: 1.1;
 }
 
-/* Film Gallery Section (Homepage) */
+/* Film Gallery Section (Homepage) - KEEP BACKGROUND */
 .film-gallery-section {
-    background-color: #291011; /* Changed to new color #291011 */
+    background-color: #291011;
     padding: 50px 0;
 }
 
 .film-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding: 20px;
 }
 
 .film-item {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: #3d2325; /* KEEP Background Color */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -224,7 +284,7 @@ img {
 
 .film-item img {
     width: 100%;
-    height: 180px; /* Fixed height for consistency */
+    height: 180px;
     object-fit: cover;
 }
 
@@ -242,7 +302,7 @@ img {
 
 /* Gallery Section (Homepage) */
 .gallery-section {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: #3d2325;
     padding: 50px 0;
     text-align: center;
 }
@@ -255,13 +315,13 @@ img {
 
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
 .photo-grid img {
     width: 100%;
-    height: 250px; /* Fixed height for consistency */
+    height: 250px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -269,7 +329,7 @@ img {
 
 /* Footer */
 .main-footer {
-    background-color: #291011; /* Changed to new color #291011 */
+    background-color: #291011;
     color: #f4f4f4;
     padding: 40px 0 20px;
     text-align: center;
@@ -278,15 +338,26 @@ img {
 .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Align items to top */
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    align-items: flex-start;
+    flex-wrap: wrap;
     padding-bottom: 30px;
-    border-bottom: 1px solid #3d2325; /* Adjusted border color */
+    border-bottom: 1px solid #3d2325;
 }
 
 .footer-left {
     text-align: left;
-    margin-bottom: 20px; /* Space for small screens */
+    margin-bottom: 20px;
+    display: flex; /* Use flexbox for logo and text slogan */
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-icon { /* Styling for the new footer logo placeholder */
+    width: 40px; /* Smaller size for footer */
+    height: 40px;
+    object-fit: cover;
+    margin-bottom: 15px; /* Space between logo and text */
+    border-radius: 50%; /* If you want it round */
 }
 
 .footer-left p {
@@ -319,17 +390,18 @@ img {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: 20px; /* Space for small screens */
+    margin-bottom: 20px;
 }
 
 .btn-talk {
-    background-color: #e67e22;
+    background-color: #e67e22; /* KEEP background color */
     color: #1a1a1a;
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
+    cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: 25px;
 }
@@ -346,9 +418,9 @@ img {
     color: #f4f4f4;
 }
 .footer-logo p:first-child {
-    color: #e67e22; /* "Mbog!" in orange */
+    color: #e67e22;
 }
-.footer-logo .logo-production-text { /* Specific class for "PRODUCTIONS" */
+.footer-logo .logo-production-text {
     font-size: 0.7em;
     line-height: 1;
     color: #ccc;
@@ -366,7 +438,7 @@ img {
 /* --- New Page Specific Styles (News, Gallery, Careers, About Us) --- */
 
 .page-hero {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: #3d2325;
     color: #f4f4f4;
     padding: 80px 0;
     text-align: center;
@@ -385,7 +457,7 @@ img {
 }
 
 .page-content {
-    background-color: #291011; /* Changed to new color #291011 */
+    background-color: #291011;
     color: #f4f4f4;
     padding: 60px 0;
 }
@@ -395,7 +467,7 @@ img {
     color: #e67e22;
     margin-top: 40px;
     margin-bottom: 25px;
-    text-align: left; /* Default to left align */
+    text-align: left;
 }
 
 /* News Page Styles */
@@ -405,7 +477,7 @@ img {
 }
 
 .news-item {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: #3d2325;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -441,12 +513,12 @@ img {
 
 /* Gallery Page Specific Grid */
 .gallery-page-grid .photo-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Larger grid for main gallery page */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
 .gallery-page-grid .photo-grid img {
-    height: 300px; /* Taller images for main gallery */
+    height: 300px;
 }
 
 /* Careers Page Styles */
@@ -456,7 +528,7 @@ img {
 }
 
 .job-item {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: #3d2325;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -475,7 +547,7 @@ img {
 }
 
 .job-item .apply-btn,
-.btn-primary { /* Combined with btn-primary for consistent styling */
+.btn-primary {
     background-color: #e67e22;
     color: #1a1a1a;
     padding: 10px 20px;
@@ -509,7 +581,7 @@ img {
 }
 
 .page-content ul li::before {
-    content: '•'; /* Custom bullet point */
+    content: '•';
     color: #e67e22;
     font-size: 1.2em;
     position: absolute;
@@ -521,7 +593,7 @@ img {
 /* --- Authentication Pages Specific Styles (Login, Register) --- */
 
 .auth-page-hero {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: #3d2325;
     color: #f4f4f4;
     padding: 80px 0;
     text-align: center;
@@ -530,7 +602,7 @@ img {
 .auth-page-hero h1 {
     font-size: 3em;
     margin-bottom: 15px;
-    color: #e67e22; /* Orange heading */
+    color: #e67e22;
 }
 
 .auth-page-hero p {
@@ -540,21 +612,21 @@ img {
 }
 
 .auth-form-section {
-    background-color: #291011; /* Changed to new color #291011 */
+    background-color: #291011;
     padding: 60px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh; /* Ensure it takes up sufficient vertical space */
+    min-height: 50vh;
 }
 
 .auth-card {
-    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    background-color: #3d2325;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-width: 450px; /* Max width for the card */
+    max-width: 450px;
     text-align: center;
     color: #f4f4f4;
 }
@@ -567,11 +639,11 @@ img {
 
 .form-group {
     margin-bottom: 20px;
-    text-align: left; /* Align labels and inputs to the left */
+    text-align: left;
 }
 
 .form-group label {
-    display: block; /* Make label take its own line */
+    display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: #ccc;
@@ -583,18 +655,18 @@ img {
 .form-group input[type="password"] {
     width: 100%;
     padding: 12px;
-    border: 1px solid #5a3d3f; /* Adjusted border color */
+    border: 1px solid #5a3d3f;
     border-radius: 5px;
-    background-color: #492e30; /* Adjusted input background color */
+    background-color: #492e30;
     color: #f4f4f4;
     font-size: 1em;
-    box-sizing: border-box; /* Include padding in width */
+    box-sizing: border-box;
 }
 
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group input[type="password"]:focus {
-    border-color: #e67e22; /* Orange focus border */
+    border-color: #e67e22;
     outline: none;
     box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
 }
@@ -626,12 +698,12 @@ img {
 }
 
 .message.success {
-    background-color: #28a745; /* Green */
+    background-color: #28a745;
     color: white;
 }
 
 .message.error {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545;
     color: white;
 }
 
@@ -639,37 +711,37 @@ img {
 /* --- Additional CSS for Checkbox Group on Registration Page --- */
 
 .form-group.checkbox-group {
-    display: flex; /* Use flexbox to align checkbox and label */
-    align-items: center; /* Vertically align them */
-    margin-top: 25px; /* Add some space above the checkbox */
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
     margin-bottom: 25px;
 }
 
 .form-group.checkbox-group input[type="checkbox"] {
-    width: auto; /* Allow checkbox to take its natural width */
-    margin-right: 10px; /* Space between checkbox and label */
-    appearance: none; /* Remove default browser checkbox style */
+    width: auto;
+    margin-right: 10px;
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 20px; /* Custom checkbox size */
+    width: 20px;
     height: 20px;
-    border: 2px solid #e67e22; /* Orange border */
+    border: 2px solid #e67e22;
     border-radius: 4px;
     cursor: pointer;
-    position: relative; /* For custom checkmark */
-    flex-shrink: 0; /* Prevent checkbox from shrinking */
+    position: relative;
+    flex-shrink: 0;
 }
 
 /* Custom checkmark for checkbox */
 .form-group.checkbox-group input[type="checkbox"]:checked {
-    background-color: #e67e22; /* Orange background when checked */
+    background-color: #e67e22;
     border-color: #e67e22;
 }
 
 .form-group.checkbox-group input[type="checkbox"]:checked::before {
-    content: '\2713'; /* Unicode checkmark character */
+    content: '\2713';
     display: block;
-    color: #1a1a1a; /* Dark color for checkmark */
+    color: #1a1a1a;
     font-size: 16px;
     line-height: 1;
     text-align: center;
@@ -680,31 +752,48 @@ img {
 }
 
 .form-group.checkbox-group label {
-    margin-bottom: 0; /* Remove bottom margin from label in this group */
-    font-weight: normal; /* Adjust font weight */
-    color: #f4f4f4; /* Lighter color for label */
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #f4f4f4;
     cursor: pointer;
 }
 
 
 /* --- Responsive adjustments for overall layout --- */
 @media (max-width: 1024px) {
-    .hero-top .hero-title {
-        font-size: 3.5em; /* Slightly smaller for tablets */
+    /* Full-height hero adjustments */
+    .full-height-hero .hero-title {
+        font-size: 4em;
     }
-    .hero-section .hero-content {
-        padding: 0 30px 0 60px; /* Adjust padding */
+    .full-height-hero .hero-description {
+        font-size: 1.1em;
     }
-    .hero-section .hero-image-top {
-        padding-right: 60px; /* Adjust padding */
+    .full-height-hero .hero-content {
+        padding: 0 30px 0 60px;
+    }
+    /* Regular hero (other pages) */
+    .hero-top:not(.full-height-hero) .hero-title {
+        font-size: 3em;
+    }
+    .hero-bottom h2 {
+        font-size: 2em;
+    }
+    .content-block-reverse .content-text h2 {
+        font-size: 1.8em;
     }
 }
 
 
 @media (max-width: 768px) {
+    .main-header {
+        position: relative; /* Header is no longer absolute on small screens */
+        background-color: #291011; /* Solid background for header on scroll */
+        height: auto;
+        padding: 10px 0;
+    }
     .main-header .container {
         flex-direction: column;
-        height: auto; /* Allow height to adjust */
+        height: auto;
         padding: 10px 20px;
     }
     .logo-area {
@@ -712,9 +801,9 @@ img {
     }
     .main-nav ul {
         flex-direction: column;
-        gap: 8px; /* Reduce gap */
+        gap: 8px;
         margin-top: 10px;
-        align-items: center; /* Center nav items */
+        align-items: center;
     }
     .main-nav ul li a {
         font-size: 0.9em;
@@ -723,29 +812,50 @@ img {
         display: none; /* Hide icon on smaller screens if not essential */
     }
 
-    /* Hero Section on smaller screens - stack content and image */
-    .hero-section {
+    /* Full-height hero on small screens */
+    .full-height-hero {
+        height: auto; /* No longer full height, let content define height */
+        padding-top: 100px; /* Space from top */
+        padding-bottom: 50px;
+        background-position: center center; /* Adjust image position for smaller screens */
+    }
+    .full-height-hero .hero-content {
+        width: 100%; /* Take full width */
+        padding: 0 20px;
+        text-align: center; /* Center text */
+    }
+    .full-height-hero .hero-title {
+        font-size: 3em; /* Smaller title for mobile */
+    }
+    .full-height-hero .hero-description {
+        max-width: 100%;
+        margin: 0 auto 20px auto;
+    }
+    .full-height-hero::before {
+        /* Adjust gradient for smaller screens if needed, or keep as is */
+        background: linear-gradient(to top, #291011 0%, rgba(41, 16, 17, 0.8) 30%, rgba(41, 16, 17, 0) 70%);
+    }
+
+    /* Regular Hero Section (other pages) on smaller screens */
+    .hero-section:not(.full-height-hero) {
         flex-direction: column;
         text-align: center;
         padding: 40px 20px;
     }
-    .hero-section .hero-content,
-    .hero-section .hero-content-bottom,
-    .hero-section .hero-image-top,
-    .hero-section .hero-image-bottom {
-        padding: 0; /* Remove specific desktop paddings */
-        margin-bottom: 30px; /* Space between stacked elements */
+    .hero-section:not(.full-height-hero) .hero-content,
+    .hero-section:not(.full-height-hero) .hero-content-bottom,
+    .hero-section:not(.full-height-hero) .hero-image-top,
+    .hero-section:not(.full-height-hero) .hero-image-bottom {
+        padding: 0;
+        margin-bottom: 30px;
     }
-    .hero-top .hero-title {
-        font-size: 2.8em; /* Further reduce title size */
-    }
-    .hero-top .hero-description {
-        max-width: 90%; /* Allow description to take more width */
-        margin: 0 auto 20px auto; /* Center it */
+    .hero-top:not(.full-height-hero) .hero-title {
+        font-size: 2.5em;
     }
     .hero-image-top img {
-        max-width: 80%; /* Limit image width to prevent it from being too large */
+        max-width: 80%;
     }
+
 
     /* Existing rules for other sections */
     .content-block-reverse {
@@ -758,10 +868,10 @@ img {
         padding: 0 20px;
     }
     .content-block-reverse .content-text {
-        margin-right: 0; /* Remove negative margin */
+        margin-right: 0;
         padding: 30px;
-        width: calc(100% - 60px); /* Adjust for padding */
-        box-sizing: border-box; /* Include padding in width */
+        width: calc(100% - 60px);
+        box-sizing: border-box;
     }
     .content-block-reverse .content-text h2 {
         font-size: 1.5em;
@@ -833,7 +943,7 @@ img {
     }
     .auth-card {
         padding: 30px 20px;
-        margin: 0 15px; /* Add some margin on smaller screens */
+        margin: 0 15px;
     }
     .auth-card h2 {
         font-size: 1.8em;
@@ -853,7 +963,7 @@ img {
         padding: 15px 0;
     }
     .hero-top .hero-title {
-        font-size: 2em; /* Even smaller for very small phones */
+        font-size: 2em;
     }
     .hero-bottom h2 {
         font-size: 1.6em;
@@ -862,13 +972,13 @@ img {
         font-size: 1.3em;
     }
     .film-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
+        grid-template-columns: 1fr;
     }
     .photo-grid {
         grid-template-columns: 1fr;
     }
     .photo-grid img {
-        height: 200px; /* Smaller height for images on small screens */
+        height: 200px;
     }
 
     /* Responsive adjustments for specific pages on 480px */
