@@ -1,1 +1,996 @@
+/* General Body & Typography */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #f4f4f4; /* Light text color for dark backgrounds */
+    background-color: #291011; /* Main site background color */
+}
 
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header */
+.main-header {
+    background-color: transparent; /* Make header background transparent initially */
+    position: absolute; /* Position over the hero image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Ensure it's on top of other content */
+    color: #f4f4f4;
+    padding: 10px 0;
+    /* Removed bottom border, as it floats over the hero image */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 80px; /* Increased height for visibility */
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-logo-icon {
+    width: 50px; /* Size of the logo icon */
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50%; /* If you want it round */
+}
+
+.logo-area .logo-small {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: #e67e22;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav ul li a {
+    font-size: 0.9em;
+    font-weight: 700;
+    color: #f4f4f4;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active-nav-link {
+    color: #e67e22;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 3px;
+}
+
+.header-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #e67e22;
+    border-radius: 50%;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    font-size: 1.2em;
+}
+
+
+/* --- Full-Page Hero Section (index.html) --- */
+.full-height-hero {
+    height: 100vh; /* Full viewport height */
+    position: relative; /* For absolute positioning of content and overlay */
+    overflow: hidden; /* Hide any overflow from image */
+    background-color: #291011; /* Fallback background */
+    background-image: url('../images/camera_man.jpg'); /* The background image */
+    background-size: cover; /* Cover the entire area */
+    background-position: center bottom; /* Position from the bottom to show hands */
+    background-repeat: no-repeat;
+    display: flex; /* Flexbox for content alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: flex-start; /* Align content to the start (left) */
+    text-align: left; /* Ensure text alignment is left */
+}
+
+/* Gradient overlay for the fade effect */
+.full-height-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, #291011 0%, rgba(41, 16, 17, 0.8) 20%, rgba(41, 16, 17, 0) 60%);
+    /* From bottom (#291011) to transparent upwards, covering hands */
+    z-index: 1; /* Place above image, below content */
+}
+
+.full-height-hero .hero-content {
+    position: relative; /* Ensure content is above the gradient */
+    z-index: 2;
+    flex: none; /* Do not flex; content width is defined by its own padding/max-width */
+    width: 50%; /* Adjust width to take left half of the page */
+    padding: 0 40px 0 100px;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Hero Section text styles for the full-height hero */
+.full-height-hero .hero-subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em; /* Slightly larger */
+    font-weight: bold;
+    color: #e67e22;
+    text-transform: uppercase;
+    letter-spacing: 3px; /* More prominent spacing */
+    margin-bottom: 15px;
+}
+
+.full-height-hero .hero-title {
+    font-size: 5.5em; /* Significantly larger as in PDF */
+    margin-bottom: 25px;
+    line-height: 1; /* Tighter line height for large text */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6); /* More prominent shadow */
+}
+
+.full-height-hero .hero-description {
+    font-size: 1.2em; /* Slightly larger for readability */
+    line-height: 1.8;
+    max-width: 90%; /* Limit width for readability */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+/* --- Regular Hero Sections (Other Pages) - unaffected by full-height-hero changes --- */
+.hero-section:not(.full-height-hero) { /* Applies to hero-sections that are NOT full-height-hero */
+    background-color: #3d2325; /* Adjusted to a slightly lighter shade of the new color */
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f4f4f4;
+}
+.hero-section:not(.full-height-hero) .hero-content,
+.hero-section:not(.full-height-hero) .hero-content-bottom {
+    flex: 1;
+    padding: 0 40px;
+}
+.hero-section:not(.full-height-hero) .hero-image-top,
+.hero-section:not(.full-height-hero) .hero-image-bottom {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-section:not(.full-height-hero) .hero-image-top img,
+.hero-section:not(.full-height-hero) .hero-image-bottom img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+.hero-top:not(.full-height-hero) .hero-subheading { /* To ensure normal hero subheadings stay as before */
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #e67e22;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+.hero-top:not(.full-height-hero) .hero-title { /* To ensure normal hero titles stay as before */
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: none;
+}
+
+
+/* Content Block (Image Left, Text Right) - Remove Background */
+.content-block-reverse {
+    display: flex;
+    align-items: center;
+    background-color: transparent; /* Made transparent */
+    padding: 50px 0;
+    color: #f4f4f4;
+}
+
+.content-block-reverse .content-image {
+    flex: 1;
+    padding: 0 40px;
+}
+
+.content-block-reverse .content-text {
+    flex: 1;
+    padding: 0 40px;
+    background-color: transparent; /* Made transparent */
+    color: #f4f4f4; /* Ensure text remains visible on the dark background */
+    padding: 40px; /* Internal padding for text */
+    margin-right: 0; /* Remove negative margin, as it's not overlapping a distinct block */
+    z-index: auto; /* Reset z-index */
+    position: static; /* Reset positioning */
+}
+
+.content-block-reverse .content-text h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+/* Film Gallery Section (Homepage) - KEEP BACKGROUND */
+.film-gallery-section {
+    background-color: #291011;
+    padding: 50px 0;
+}
+
+.film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.film-item {
+    background-color: #3d2325; /* KEEP Background Color */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #f4f4f4;
+    transition: transform 0.2s ease;
+}
+
+.film-item:hover {
+    transform: translateY(-5px);
+}
+
+.film-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.film-item h3 {
+    font-size: 1.2em;
+    margin: 15px 0 5px;
+    color: #e67e22;
+}
+
+.film-item p {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+/* Gallery Section (Homepage) */
+.gallery-section {
+    background-color: #3d2325;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.gallery-section h2 {
+    font-size: 2.5em;
+    color: #e67e22;
+    margin-bottom: 40px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.main-footer {
+    background-color: #291011;
+    color: #f4f4f4;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #3d2325;
+}
+
+.footer-left {
+    text-align: left;
+    margin-bottom: 20px;
+    display: flex; /* Use flexbox for logo and text slogan */
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-icon { /* Styling for the new footer logo placeholder */
+    width: 40px; /* Smaller size for footer */
+    height: 40px;
+    object-fit: cover;
+    margin-bottom: 15px; /* Space between logo and text */
+    border-radius: 50%; /* If you want it round */
+}
+
+.footer-left p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 20px;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.footer-nav ul li a {
+    font-size: 0.9em;
+    line-height: 2;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #e67e22;
+}
+
+.footer-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.btn-talk {
+    background-color: #e67e22; /* KEEP background color */
+    color: #1a1a1a;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.btn-talk:hover {
+    background-color: #d1701e;
+}
+
+/* Styling for the new full image logo in the footer */
+.footer-logo-container {
+    margin-top: 20px; /* Space from the 'Lets talk' button */
+    display: flex; /* To center the image if needed */
+    justify-content: flex-end; /* Align to the right within footer-right */
+    width: 100%; /* Ensure it takes full available width for flex alignment */
+}
+
+.footer-full-logo {
+    max-width: 150px; /* Adjust max width as needed for your logo size */
+    height: auto;
+    display: block; /* Ensures it behaves like a block element */
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #999;
+}
+
+
+/* --- New Page Specific Styles (News, Gallery, Careers, About Us) --- */
+
+.page-hero {
+    background-color: #3d2325;
+    color: #f4f4f4;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 3.2em;
+    margin-bottom: 15px;
+    color: #e67e22;
+}
+
+.page-hero p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-content {
+    background-color: #291011;
+    color: #f4f4f4;
+    padding: 60px 0;
+}
+
+.page-content .section-title {
+    font-size: 2em;
+    color: #e67e22;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* News Page Styles */
+.news-list {
+    display: grid;
+    gap: 30px;
+}
+
+.news-item {
+    background-color: #3d2325;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.news-item h3 {
+    font-size: 1.5em;
+    color: #f4f4f4;
+    margin-bottom: 10px;
+}
+
+.news-item .news-date {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.news-item p {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.news-item .read-more {
+    color: #e67e22;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.news-item .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Gallery Page Specific Grid */
+.gallery-page-grid .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.gallery-page-grid .photo-grid img {
+    height: 300px;
+}
+
+/* Careers Page Styles */
+.job-listings {
+    display: grid;
+    gap: 25px;
+}
+
+.job-item {
+    background-color: #3d2325;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.job-item h3 {
+    font-size: 1.4em;
+    color: #e67e22;
+    margin-bottom: 8px;
+}
+
+.job-item p {
+    font-size: 0.95em;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.job-item .apply-btn,
+.btn-primary {
+    background-color: #e67e22;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.job-item .apply-btn:hover,
+.btn-primary:hover {
+    background-color: #d1701e;
+}
+
+/* About Us Page Styles */
+.page-content ul {
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.page-content ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.page-content ul li::before {
+    content: '•';
+    color: #e67e22;
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+
+/* --- Authentication Pages Specific Styles (Login, Register) --- */
+
+.auth-page-hero {
+    background-color: #3d2325;
+    color: #f4f4f4;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.auth-page-hero h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #e67e22;
+}
+
+.auth-page-hero p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.auth-form-section {
+    background-color: #291011;
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.auth-card {
+    background-color: #3d2325;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    color: #f4f4f4;
+}
+
+.auth-card h2 {
+    font-size: 2.2em;
+    color: #e67e22;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ccc;
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #5a3d3f;
+    border-radius: 5px;
+    background-color: #492e30;
+    color: #f4f4f4;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #e67e22;
+    outline: none;
+    box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+}
+
+
+.auth-footer-text {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.auth-footer-text a {
+    color: #e67e22;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.auth-footer-text a:hover {
+    color: #d1701e;
+}
+
+/* Messages for feedback (e.g., success/error from JS) */
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.message.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+/* --- Additional CSS for Checkbox Group on Registration Page --- */
+
+.form-group.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e67e22;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Custom checkmark for checkbox */
+.form-group.checkbox-group input[type="checkbox"]:checked {
+    background-color: #e67e22;
+    border-color: #e67e22;
+}
+
+.form-group.checkbox-group input[type="checkbox"]:checked::before {
+    content: '\2713';
+    display: block;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #f4f4f4;
+    cursor: pointer;
+}
+
+
+/* --- Responsive adjustments for overall layout --- */
+@media (max-width: 1024px) {
+    /* Full-height hero adjustments */
+    .full-height-hero .hero-title {
+        font-size: 4em;
+    }
+    .full-height-hero .hero-description {
+        font-size: 1.1em;
+    }
+    .full-height-hero .hero-content {
+        padding: 0 30px 0 60px;
+    }
+    /* Regular hero (other pages) */
+    .hero-top:not(.full-height-hero) .hero-title {
+        font-size: 3em;
+    }
+    .hero-bottom h2 {
+        font-size: 2em;
+    }
+    .content-block-reverse .content-text h2 {
+        font-size: 1.8em;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .main-header {
+        position: relative; /* Header is no longer absolute on small screens */
+        background-color: #291011; /* Solid background for header on scroll */
+        height: auto;
+        padding: 10px 0;
+    }
+    .main-header .container {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
+    }
+    .logo-area {
+        margin-bottom: 10px;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+        align-items: center;
+    }
+    .main-nav ul li a {
+        font-size: 0.9em;
+    }
+    .header-icon {
+        display: none; /* Hide icon on smaller screens if not essential */
+    }
+
+    /* Full-height hero on small screens */
+    .full-height-hero {
+        height: auto; /* No longer full height, let content define height */
+        padding-top: 100px; /* Space from top */
+        padding-bottom: 50px;
+        background-position: center center; /* Adjust image position for smaller screens */
+    }
+    .full-height-hero .hero-content {
+        width: 100%; /* Take full width */
+        padding: 0 20px;
+        text-align: center; /* Center text */
+    }
+    .full-height-hero .hero-title {
+        font-size: 3em; /* Smaller title for mobile */
+    }
+    .full-height-hero .hero-description {
+        max-width: 100%;
+        margin: 0 auto 20px auto;
+    }
+    .full-height-hero::before {
+        /* Adjust gradient for smaller screens if needed, or keep as is */
+        background: linear-gradient(to top, #291011 0%, rgba(41, 16, 17, 0.8) 30%, rgba(41, 16, 17, 0) 70%);
+    }
+
+    /* Regular Hero Section (other pages) on smaller screens */
+    .hero-section:not(.full-height-hero) {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .hero-section:not(.full-height-hero) .hero-content,
+    .hero-section:not(.full-height-hero) .hero-content-bottom,
+    .hero-section:not(.full-height-hero) .hero-image-top,
+    .hero-section:not(.full-height-hero) .hero-image-bottom {
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .hero-top:not(.full-height-hero) .hero-title {
+        font-size: 2.5em;
+    }
+    .hero-image-top img {
+        max-width: 80%;
+    }
+
+
+    /* Existing rules for other sections */
+    .content-block-reverse {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 0;
+    }
+    .content-block-reverse .content-image {
+        margin-bottom: 30px;
+        padding: 0 20px;
+    }
+    .content-block-reverse .content-text {
+        margin-right: 0;
+        padding: 30px;
+        width: calc(100% - 60px);
+        box-sizing: border-box;
+    }
+    .content-block-reverse .content-text h2 {
+        font-size: 1.5em;
+    }
+
+    .film-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 10px;
+    }
+
+    .gallery-section h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-left,
+    .footer-right {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .footer-nav ul {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .btn-talk {
+        margin-bottom: 20px;
+    }
+    .footer-logo {
+        margin-top: 10px;
+    }
+
+    /* Responsive adjustments for specific pages on 768px */
+    .page-hero {
+        padding: 60px 20px;
+    }
+    .page-hero h1 {
+        font-size: 2.5em;
+    }
+    .page-hero p {
+        font-size: 1em;
+    }
+    .page-content {
+        padding: 40px 20px;
+    }
+    .page-content .section-title {
+        font-size: 1.8em;
+    }
+    .gallery-page-grid .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .gallery-page-grid .photo-grid img {
+        height: 250px;
+    }
+    .job-item, .news-item {
+        padding: 20px;
+    }
+    .job-item h3, .news-item h3 {
+        font-size: 1.3em;
+    }
+    .auth-page-hero h1 {
+        font-size: 2.5em;
+    }
+    .auth-card {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    .auth-card h2 {
+        font-size: 1.8em;
+    }
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 0.9em;
+    }
+    .container {
+        width: 95%;
+        padding: 15px 0;
+    }
+    .hero-top .hero-title {
+        font-size: 2em;
+    }
+    .hero-bottom h2 {
+        font-size: 1.6em;
+    }
+    .content-block-reverse .content-text h2 {
+        font-size: 1.3em;
+    }
+    .film-grid {
+        grid-template-columns: 1fr;
+    }
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+    .photo-grid img {
+        height: 200px;
+    }
+
+    /* Responsive adjustments for specific pages on 480px */
+    .page-hero h1 {
+        font-size: 2em;
+    }
+    .page-content .section-title {
+        font-size: 1.5em;
+    }
+    .gallery-page-grid .photo-grid {
+        grid-template-columns: 1fr;
+    }
+    .gallery-page-grid .photo-grid img {
+        height: 200px;
+    }
+    .auth-page-hero h1 {
+        font-size: 2em;
+    }
+}
