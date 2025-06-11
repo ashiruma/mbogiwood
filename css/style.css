@@ -45,19 +45,40 @@ img {
     z-index: 100; /* Ensure it's on top of other content */
     color: #f4f4f4;
     padding: 10px 0;
-    /* Removed bottom border, as it floats over the hero image */
 }
 
 .main-header .container {
     display: flex;
-    justify-content: flex-end; /* Align navigation and logo to the right */
+    justify-content: space-between; /* CORRECTED: Space out logo (left) and nav (right) */
     align-items: center;
     padding: 0 20px;
     height: 80px; /* Increased height for visibility */
 }
 
-/* REMOVED .logo-area and its content styling here from previous versions */
-/* .logo-area, .header-logo-icon, .logo-small are no longer used for the left header logo */
+/* NEW: Header Left Logo Area (from original HTML structure, now re-styled) */
+.logo-area {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-logo-icon { /* Styling for the actual logo image on the left */
+    width: 50px; /* Size of the logo icon */
+    height: 50px;
+    object-fit: contain; /* Contain the entire logo, don't crop */
+    margin-right: 10px;
+    border-radius: 0; /* No border-radius if it's not a circle */
+}
+
+.logo-area .logo-small {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: #e67e22; /* Orange color */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
 
 .main-nav ul {
     list-style: none;
@@ -65,8 +86,7 @@ img {
     padding: 0;
     display: flex;
     gap: 25px;
-    margin-right: auto; /* Push navigation to the left as much as possible */
-    /* This makes navigation appear on the left, pushing the logo to the far right. */
+    /* REMOVED margin-right: auto; as it's now handled by justify-content: space-between */
 }
 
 .main-nav ul li a {
@@ -84,20 +104,11 @@ img {
     padding-bottom: 3px;
 }
 
-.header-main-logo { /* New class for the sole header logo on the right */
-    margin-left: 30px; /* Space from navigation */
-    flex-shrink: 0; /* Prevent shrinking */
-    display: flex; /* For alignment of image */
-    align-items: center;
-    justify-content: center;
-}
-
-.header-main-logo-img { /* Styling for the actual logo image */
-    width: 60px; /* Adjust size as needed */
-    height: 60px;
-    object-fit: contain; /* Contain the entire logo, don't crop */
-    border-radius: 0; /* No border-radius if it's not a circle */
-}
+/* The header-main-logo (for right-aligned logo) is removed from HTML, so these styles are now unused. */
+/* If you still intended to have a second, different logo on the right, we need to adjust HTML. */
+/* For now, assuming only one logo on the left as per original PDF image. */
+.header-main-logo { display: none; } /* Hide if HTML is updated to remove it */
+.header-main-logo-img { display: none; } /* Hide if HTML is updated to remove it */
 
 
 /* --- Full-Page Hero Section (index.html) --- */
@@ -116,7 +127,7 @@ img {
     text-align: left; /* Ensure text alignment is left */
 }
 
-/* Gradient overlay for the fade effect */
+/* Gradient overlay for the fade effect, covering the hands of the photographer in a haze */
 .full-height-hero::before {
     content: '';
     position: absolute;
@@ -125,7 +136,7 @@ img {
     right: 0;
     bottom: 0;
     background: linear-gradient(to top, #291011 0%, rgba(41, 16, 17, 0.8) 20%, rgba(41, 16, 17, 0) 60%);
-    /* From bottom (#291011) to transparent upwards, covering hands */
+    /* Fades from #291011 at the bottom to transparent upwards */
     z-index: 1; /* Place above image, below content */
 }
 
@@ -177,7 +188,7 @@ img {
     flex: 1;
     padding: 0 40px;
 }
-.hero-section:not(.full-height-hero) .hero-image-top,
+.hero-section:not(.full-height-hero) .hero-image-top, /* This HTML element is removed from index.html */
 .hero-section:not(.full-height-hero) .hero-image-bottom {
     flex: 1;
     display: flex;
@@ -208,7 +219,7 @@ img {
 }
 
 
-/* Content Block (Image Left, Text Right) - Remove Background */
+/* Content Block (Image Left, Text Right) - Background is transparent on all pages except specified */
 .content-block-reverse {
     display: flex;
     align-items: center;
@@ -239,7 +250,7 @@ img {
     line-height: 1.1;
 }
 
-/* Film Gallery Section (Homepage) - KEEP BACKGROUND */
+/* Film Gallery Section (Homepage) - RETAINS BACKGROUND */
 .film-gallery-section {
     background-color: #291011;
     padding: 50px 0;
@@ -331,12 +342,12 @@ img {
 .footer-left {
     text-align: left;
     margin-bottom: 20px;
-    display: flex; /* Use flexbox for logo and text slogan */
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-/* Removed .footer-logo-icon styling from here */
+/* Removed .footer-logo-icon styling from here, as it's removed from HTML */
 /* .footer-logo-icon, .footer-left p (for logo text) are no longer used for the left footer logo */
 
 .footer-left p {
