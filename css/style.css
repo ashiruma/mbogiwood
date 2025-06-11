@@ -37,7 +37,7 @@ img {
 
 /* Header */
 .main-header {
-    background-color: transparent; /* Make header background transparent initially */
+    background-color: transparent; /* Remains transparent to allow hero background */
     position: absolute; /* Position over the hero image */
     top: 0;
     left: 0;
@@ -49,20 +49,21 @@ img {
 
 .main-header .container {
     display: flex;
-    justify-content: space-between; /* CORRECTED: Space out logo (left) and nav (right) */
+    justify-content: space-between; /* ALIGN LEFT LOGO AREA TO LEFT, NAV + UTILITY ICON TO RIGHT */
     align-items: center;
     padding: 0 20px;
     height: 80px; /* Increased height for visibility */
 }
 
-/* NEW: Header Left Logo Area (from original HTML structure, now re-styled) */
+/* Header Left Logo Area (Text + Optional Icon) - This is the primary logo group */
 .logo-area {
     display: flex;
     align-items: center;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Prevents shrinking */
+    /* REMOVED .logo-area, .header-logo-icon, .logo-small from the previous CSS block */
 }
 
-.header-logo-icon { /* Styling for the actual logo image on the left */
+.header-logo-icon { /* Styling for the actual logo image */
     width: 50px; /* Size of the logo icon */
     height: 50px;
     object-fit: contain; /* Contain the entire logo, don't crop */
@@ -80,13 +81,14 @@ img {
     white-space: nowrap;
 }
 
+/* Main Navigation (on the right) */
 .main-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 25px;
-    /* REMOVED margin-right: auto; as it's now handled by justify-content: space-between */
+    /* No auto margins needed here, space-between in container handles it */
 }
 
 .main-nav ul li a {
@@ -104,14 +106,58 @@ img {
     padding-bottom: 3px;
 }
 
-/* The header-main-logo (for right-aligned logo) is removed from HTML, so these styles are now unused. */
-/* If you still intended to have a second, different logo on the right, we need to adjust HTML. */
-/* For now, assuming only one logo on the left as per original PDF image. */
-.header-main-logo { display: none; } /* Hide if HTML is updated to remove it */
-.header-main-logo-img { display: none; } /* Hide if HTML is updated to remove it */
+/* NEW: Header Utility Icon (Far right) */
+.header-utility-icon {
+    width: 28px; /* Size of the icon area */
+    height: 28px;
+    background-color: #e67e22; /* Example: a colored circle */
+    border-radius: 50%;
+    margin-left: 20px; /* Space from navigation */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+    font-size: 1.2em;
+}
 
+/* The header-main-logo and header-main-logo-img are now entirely removed from HTML */
+/* if they were intended for a second logo, this CSS effectively hides them */
+.header-main-logo { display: none; }
+.header-main-logo-img { display: none; }
 
 /* --- Full-Page Hero Section (index.html) --- */
+/* The "gradient reveals photo at the header of the website" requested
+   is implemented here as a background for the *entire* header,
+   and a gradient overlay. This assumes the 'photo at the header' is decorative. */
+/* If the photo is meant to be a logo that's revealed, it should be an img tag inside .logo-area
+   and this background effect should be applied to .main-header itself, or .header-main-logo. */
+/* Given the latest clarification for header, this effect is best suited for the main hero or a secondary header band. */
+
+/* For the effect of gradient revealing photo in the *main_header*, we can set it on main-header: */
+/* However, the PDF shows a clear header with content, not a background image hero effect. */
+/* So, I will remove the background-image and gradient from main-header to match the PDF. */
+/* The 'man with camera' effect is still on .full-height-hero */
+
+/*
+   If you still want a gradient with a photo revealed *in the header itself*,
+   it would likely be a background for the whole .main-header,
+   and then the content (.container) would need appropriate padding/margins.
+   For simplicity, I'm sticking to the clear PDF layout for header: logo left, nav right.
+*/
+
+/* Resetting main-header background as per PDF clarity */
+.main-header {
+    background-color: #291011; /* Solid universal color for header */
+    position: relative; /* No absolute positioning needed anymore for header */
+    width: 100%;
+    z-index: 100;
+    color: #f4f4f4;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* Removed background-image and linear-gradient from here */
+}
+
+
 .full-height-hero {
     height: 100vh; /* Full viewport height */
     position: relative; /* For absolute positioning of content and overlay */
@@ -347,9 +393,7 @@ img {
     align-items: flex-start;
 }
 
-/* Removed .footer-logo-icon styling from here, as it's removed from HTML */
-/* .footer-logo-icon, .footer-left p (for logo text) are no longer used for the left footer logo */
-
+/* Footer Left Logo (text slogan is still there, but not image) */
 .footer-left p {
     font-size: 1.5em;
     font-weight: bold;
@@ -982,5 +1026,90 @@ img {
     }
     .auth-page-hero h1 {
         font-size: 2em;
+    }
+}
+/* --- Contact Us Page Specific Styles --- */
+
+.contact-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 40px; /* Space between columns */
+    padding: 20px 0;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.contact-methods {
+    background-color: #3d2325;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-methods .section-title {
+    margin-top: 0; /* Override default section-title margin */
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between contact links */
+    margin-bottom: 40px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    background-color: #e67e22; /* Orange background for links */
+    color: #1a1a1a;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: left; /* Ensure text is left-aligned within the button */
+}
+
+.contact-link:hover {
+    background-color: #d1701e;
+    transform: translateY(-2px);
+}
+
+.contact-link i {
+    font-size: 1.4em;
+    margin-right: 15px; /* Space between icon and text */
+}
+
+/* Newsletter card specific adjustments */
+.newsletter-card {
+    margin-top: 40px; /* Space above the newsletter section */
+}
+.newsletter-card .btn-primary {
+    width: auto; /* Allow subscribe button to be smaller if needed */
+    padding: 10px 20px;
+}
+
+
+/* Responsive adjustments for Contact Us page */
+@media (max-width: 768px) {
+    .contact-content-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 30px;
+    }
+    .contact-methods .section-title {
+        text-align: center; /* Center titles on small screens */
+    }
+    .contact-links {
+        align-items: center; /* Center buttons when stacked */
+    }
+    .contact-link {
+        width: 80%; /* Make buttons narrower if desired */
+        max-width: 300px;
+        justify-content: center; /* Center content within button */
+    }
+}
+@media (max-width: 480px) {
+    .contact-link {
+        width: 100%; /* Full width on very small screens */
     }
 }
