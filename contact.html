@@ -1,176 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact Us - Mbogiwood Productions</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212;
-      color: #f0f0f0;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    a { text-decoration: none; }
-    /* Header & Navigation */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #008000, #B22222);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-    header img { max-width: 120px; }
-    nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-    nav a { color: #fff; font-weight: 600; padding: 0.5rem 1rem; transition: color 0.3s ease; }
-    nav a:hover { color: #FFD700; }
-    /* Main Content */
-    main { margin-top: 80px; padding: 4rem 2rem; text-align: center; }
-    h1 { text-align: center; margin-bottom: 2rem; font-size: 2.5rem; }
-    form { max-width: 500px; margin: 0 auto; text-align: left; }
-    label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 5px;
-    }
-    button.btn {
-      background-color: #FFD700;
-      color: #121212;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: block;
-      width: 100%;
-    }
-    button.btn:hover { background-color: #B22222; color: #fff; }
-    .message { text-align: center; margin-top: 1rem; font-size: 1.1rem; }
-    /* Footer */
-    footer {
-      background: #008000;
-      padding: 1rem 2rem;
-      text-align: center;
-      margin-top: 40px;
-    }
-    footer nav a {
-      margin: 0 0.5rem;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    footer nav a:hover { color: #FFD700; }
-    @media (max-width: 768px) {
-      header { flex-direction: column; }
-      nav { justify-content: center; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mbogiwood Productions</title>
+    <link rel="stylesheet" href="css/style.css"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <img src="logo.png" alt="Mbogiwood Logo">
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-        <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
-    </nav>
-    
-  </header>
-  
-  <!-- Main Content -->
-  <main>
-    <h1>Contact Us</h1>
-    <form id="contactForm" action="#" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="Your name" required>
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Your email" required>
-      
-      <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" placeholder="Subject" required>
-      
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
-      
-      <button type="submit" class="btn">Submit</button>
-    </form>
-    <p id="formFeedback" class="message"></p>
-  </main>
-  
-  <!-- Footer -->
-  <footer>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="investors.html">Investors</a>
-      <a href="subscriptions.html">Subscriptions</a>
-      <a href="employment.html">Employment</a>
-      <a href="news.html">News</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <p>&copy; 2025 Mbogiwood Productions. All Rights Reserved.</p>
-  </footer>
-  
-  <!-- JavaScript: Contact Form Submission -->
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", async function(e) {
-      e.preventDefault(); // Prevent default submission
-      
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const message = document.getElementById("message").value.trim();
-      const feedback = document.getElementById("formFeedback");
-      
-      // Basic client-side validation
-      if (!name || !email || !subject || !message) {
-        feedback.innerText = "Please fill out all fields.";
-        return;
-      }
-      
-      feedback.innerText = "Sending message...";
-      
-      const formData = { name, email, subject, message };
-      
-      try {
-        const response = await fetch("http://127.0.0.1:5000/api/contact", { // Update with your backend endpoint
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
-        if (response.ok) {
-          feedback.innerText = "Thank you for contacting us. We'll get back to you soon!";
-          document.getElementById("contactForm").reset();
-        } else {
-          feedback.innerText = "There was an error sending your message. Please try again later.";
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        feedback.innerText = "An unexpected error occurred. Please try again later.";
-      }
-    });
-  </script>
-</body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-area">
+                <a href="index.html">
+                    <img src="LOGO.png" alt="Mbogiwood Logo" class="header-logo-icon">
+                    <span class="logo-small">MBOGIWOOD PRODUCTIONS</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="#" id="logoutButton">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="header-utility-icon">
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Get in Touch</h1>
+                <p>We'd love to hear from you! Reach out through the channels below or send us a message.</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container contact-content-grid">
+                <div class="contact-methods">
+                    <h2 class="section-title">Connect With Us Directly</h2>
+                    <div class="contact-links">
+                        <a href="https://wa.me/+254719317559" target="_blank" class="contact-link whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="mailto:mbogiwoodproductionsplc.com" class="contact-link email">
+                            <i class="fas fa-envelope"></i> Email Us
+                        </a>
+                        <a href="https://www.instagram.com/mbogiwoodproductions" target="_blank" class="contact-link instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        </div>
+
+                    <h2 class="section-title">Subscribe to Our Newsletter</h2>
+                    <div class="form-card newsletter-card">
+                        <form id="newsletterForm">
+                            <p>Stay updated on our latest films, news, and opportunities.</p>
+                            <div class="form-group">
+                                <label for="newsletterEmail">Your Email:</label>
+                                <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Subscribe</button>
+                        </form>
+                        <div id="newsletterMessage" class="message"></div>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <h2 class="section-title">Send Us a Message</h2>
+                    <div class="form-card">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="contactName">Name:</label>
+                                <input type="text" id="contactName" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email:</label>
+                                <input type="email" id="contactEmail" name="email" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">Subject:</label>
+                                <input type="text" id="contactSubject" name="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message:</label>
+                                <textarea id="contactMessage" name="message" rows="5" placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </form>
+                        <div id="contactFormMessage" class="message"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>lets make magic</p>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-right">
+                <a href="contact.html" class="btn-talk">Lets talk</a>
+                <div class="footer-logo-container">
+                    <a href="index.html">
+                        <img src="LOGO.png" alt="Mbogiwood Productions Full Logo" class="footer-full-logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Mbogiwood Productions PLC. All rights reserved. </p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script> </body>
 </html>
