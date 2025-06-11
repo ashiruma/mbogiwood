@@ -1113,3 +1113,90 @@ img {
         width: 100%; /* Full width on very small screens */
     }
 }
+
+/* --- Projects Page Specific Styles --- */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
+    gap: 30px;
+    padding: 20px 0;
+    justify-content: center; /* Center items if they don't fill a row */
+}
+
+.project-card {
+    background-color: #3d2325; /* Similar to other cards */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #f4f4f4;
+    transition: transform 0.2s ease;
+    overflow: hidden; /* Ensure content doesn't spill */
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px; /* Consistent image height */
+    object-fit: cover;
+    border-radius: 4px; /* Slightly rounded images */
+    margin-bottom: 15px;
+}
+
+.project-card h3 {
+    font-size: 1.4em;
+    color: #f4f4f4;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 0.95em;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.project-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.project-status.completed {
+    background-color: #28a745; /* Green for completed */
+    color: white;
+}
+
+.project-status.upcoming {
+    background-color: #e67e22; /* Orange for upcoming */
+    color: #1a1a1a;
+}
+
+/* Responsive adjustments for Projects page */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust grid for smaller screens */
+        gap: 20px;
+    }
+    .project-card {
+        padding: 15px;
+    }
+    .project-card img {
+        height: 150px;
+    }
+}
+@media (max-width: 480px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .project-card img {
+        height: 200px; /* Taller on single column */
+    }
+}
