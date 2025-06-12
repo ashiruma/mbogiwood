@@ -2,13 +2,9 @@
 
 from rest_framework import serializers
 from .models import Film
-from accounts.serializers import CustomUserSerializer # Import CustomUserSerializer to represent the creator
+from accounts.serializers import CustomUserSerializer
 
 class FilmSerializer(serializers.ModelSerializer):
-    # Nested serializer for the content_creator to show relevant user details
-    # read_only=True means this field won't be used for creating/updating the Film via this serializer
-    # but will be included when fetching a Film.
-    # It will display the username, email, is_content_creator from the CustomUserSerializer.
     content_creator = CustomUserSerializer(read_only=True)
 
     class Meta:
